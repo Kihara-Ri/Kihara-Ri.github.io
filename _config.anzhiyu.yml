@@ -152,11 +152,11 @@ katex:
 # --------------------------------------
 
 # Favicon（网站图标）
-favicon: /images/favicon.ico
+favicon: /img/favicon.ico
 
 # Avatar (头像)
 avatar:
-  img: /images/favicon.ico
+  img: /images/Avator.png
   effect: false
 
 # Disable all banner image
