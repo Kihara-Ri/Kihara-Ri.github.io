@@ -601,9 +601,9 @@
             
             <tag> 美国 </tag>
             
-            <tag> 政治 </tag>
-            
             <tag> history </tag>
+            
+            <tag> 政治 </tag>
             
         </tags>
       
@@ -744,11 +744,11 @@
       
         <tags>
             
-            <tag> history </tag>
-            
             <tag> 小约翰 </tag>
             
             <tag> 通辽 </tag>
+            
+            <tag> history </tag>
             
         </tags>
       
@@ -835,6 +835,17 @@
     
     
     <entry>
+      <title>书籍</title>
+      <link href="/books/index.html"/>
+      <url>/books/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于</title>
       <link href="/about/index.html"/>
       <url>/about/index.html</url>
@@ -857,9 +868,9 @@
     
     
     <entry>
-      <title>书籍</title>
-      <link href="/books/index.html"/>
-      <url>/books/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -871,17 +882,6 @@
       <title>标签</title>
       <link href="/tags/index.html"/>
       <url>/tags/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
