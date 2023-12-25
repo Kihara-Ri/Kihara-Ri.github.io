@@ -30,7 +30,7 @@ nav:
       item:
         - name: 个人网站
           link: https://limuyuan.top/
-          icon: /images/favicon.ico
+          icon: /img/favicon.ico
         
         - name: Github
           link: https://github.com/Kihara-Ri
