@@ -10,10 +10,10 @@ menu:
   #   留言板: /comments/ || anzhiyu-icon-envelope
 
   兴趣:
-    我的音乐: /music/ || anzhiyu-icon-music
+    音乐: /music/ || anzhiyu-icon-music
     番剧: /bangumis/ || anzhiyu-icon-bilibili
-  #   相册集: /album/ || anzhiyu-icon-images
-  #   小空调: /air-conditioner/ || anzhiyu-icon-fan
+    电影: /films/ || hexo-film
+    书籍: /books/ || hexo-books
 
   关于:
     关于本人: /about/ || anzhiyu-icon-paper-plane
@@ -24,30 +24,31 @@ menu:
 nav:
   enable: true
   travelling: false
-  clock: true
+  clock: true # 目前貌似不能显示自己的账号
   menu:
     - title: 网页
       item:
         - name: 个人网站
           link: https://limuyuan.top/
-          icon: /img/favicon.ico
+          icon: /images/favicon.ico
         
         - name: Github
           link: https://github.com/Kihara-Ri
-          icon: 
+          icon: /images/GitHub_Invertocat_Logo.svg
 
-        - name: Jupyter云服务器
+        - name: Jupyter云
           link: https://59.110.46.244:8000
-          icon:
+          icon: /images/Jupyter_logo.svg
         
-        - name: 服务器面板
-          link: https://ecs.console.aliyun.com/home#/
+        - name: Notion数据库
+          link: https://kiharari.notion.site/kiharari/8a4650422a3c4bfc98d58c8ce863a5a5?v=1c9335cafb8748e38e71955b7c372a0f
+          icon: /images/Notion-logo.svg
 
     - title: 项目
       item:
         - name: bili_notion
           link: https://github.com/Kihara-Ri/From-API-to-Bilibili
-          icon: 
+          icon: /images/bili_notion.svg
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
 mourn:
@@ -77,7 +78,8 @@ copy:
 # formal:
 #   name: link || icon
 social:
-  Github: https://github.com/Kihara-Ri || anzhiyu-icon-github
+  Github: https://github.com/Kihara-Ri || hexo-github
+  # Wechat:
   # BiliBili: https://space.bilibili.com/372204786 || anzhiyu-icon-bilibili
 
 # 作者卡片 状态
@@ -150,11 +152,11 @@ katex:
 # --------------------------------------
 
 # Favicon（网站图标）
-favicon: /favicon.ico
+favicon: /images/favicon.ico
 
 # Avatar (头像)
 avatar:
-  img: https://bu.dusays.com/2023/04/27/64496e511b09c.jpg
+  img: /images/favicon.ico
   effect: false
 
 # Disable all banner image
@@ -164,7 +166,7 @@ disable_top_img: false
 index_img: false # "background: url() top / cover no-repeat"
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: false
+default_top_img: true
 
 cover:
   # display the cover or not (是否显示文章封面)
@@ -176,7 +178,12 @@ cover:
   position: left
   # When cover is not set, the default cover is displayed (当没有设置cover时，默认的封面显示)
   default_cover:
-    # - /img/default_cover.jpg
+    - /img/default_cover1.png
+    - /img/default_cover2.png
+    - /img/default_cover3.png
+    - /img/default_cover4.png
+    - /img/default_cover5.png
+    - /img/default_cover6.png
 
 # Replace Broken Images (替换无法显示的图片)
 error_img:
@@ -206,7 +213,7 @@ post_meta:
 
 # 主色调相关配置
 mainTone:
-  enable: false # true or false 文章是否启用获取图片主色调
+  enable: true # true or false 文章是否启用获取图片主色调
   mode: api # cdn/api/both cdn模式为图片url+imageAve参数获取主色调，api模式为请求API获取主色调，both模式会先请求cdn参数，无法获取的情况下将请求API获取，可以在文章内配置main_color: '#3e5658'，使用十六进制颜色，则不会请求both/cdn/api获取主色调，而是直接使用配置的颜色
   # 项目地址：https://github.com/anzhiyu-c/img2color-go
   api: https://img2color-go.vercel.app/api?img= # mode为api时可填写
@@ -258,7 +265,7 @@ post_copyright:
 
 # Sponsor/reward
 reward:
-  enable: true
+  enable: false
   QR_code:
     - img: https://npm.elemecdn.com/anzhiyu-blog@1.1.6/img/post/common/qrcode-weichat.png
       link:
@@ -270,10 +277,10 @@ reward:
 # Post edit
 # Easily browse and edit blog source code online.
 post_edit: # 目前仅可选择一个平台在线编辑
-  enable: false
+  enable: true
   # github: https://github.com/user-name/repo-name/edit/branch-name/subdirectory-name/
   # For example: https://github.com/jerryc127/butterfly.js.org/edit/main/source/
-  github: false
+  github: https://github.com/Kihara-Ri/Kihara-Ri.github.io/tree/main/posts
 
   # yuque: https://www.yuque.com/user-name/repo-name/
   # 示例: https://www.yuque.com/yuque/yuque/
@@ -853,7 +860,7 @@ aside:
 busuanzi:
   site_uv: false
   site_pv: false
-  page_pv: true
+  page_pv: false
 
 # Time difference between publish date and now (网页运行时间)
 # Formal: Month/Day/Year Time or Year/Month/Day Time
@@ -863,7 +870,7 @@ runtimeshow:
 
 # Console - Newest Comments
 newest_comments:
-  enable: true
+  enable: false
   sort_order: # Don't modify the setting unless you know how it works
   limit: 6
   storage: 10 # unit: mins, save data to localStorage
@@ -974,7 +981,7 @@ note:
   light_bg_offset: 0
 
 icons:
-  ali_iconfont_js: # 阿里图标symbol 引用链接，主题会进行加载 symbol 引用
+  ali_iconfont_js: https://at.alicdn.com/t/c/font_4386068_oq43ulvs9lr.js?spm=a313x.manage_type_myprojects.i1.10.20af3a81EtBtqq&file=font_4386068_oq43ulvs9lr.js # 阿里图标symbol 引用链接，主题会进行加载 symbol 引用
   fontawesome: false #是否启用fontawesome6图标
   fontawesome_animation_css: #fontawesome_animation 如果有就会加载，示例值：https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/assets/font-awesome-animation.min.css
 
@@ -1219,7 +1226,7 @@ rightClickMenu:
 
 # 首页随便逛逛people模式 而非技能点模式，关闭后为技能点模式需要配置creativity.yml
 peoplecanvas:
-  enable: true
+  enable: false
   img: https://upload-bbs.miyoushe.com/upload/2023/09/03/125766904/ee23df8517f3c3e3efc4145658269c06_5714860933110284659.png
 
 # 动效
