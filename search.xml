@@ -41,7 +41,7 @@
       <link href="/posts/markdown%E8%AF%AD%E6%B3%95.html"/>
       <url>/posts/markdown%E8%AF%AD%E6%B3%95.html</url>
       
-        <content type="html"><![CDATA[<h1 id="markdown语法">Markdown语法</h1><p><a href="https://www.markdownguide.org/getting-started/">Markdown官方教程</a></p><p>Markdown的语法非常丰富，虽然表面上Markdown能做的事很少，但是只要嵌入html就一切皆有可能，在这里我列下可以参考的文档以供快速查找：</p><ol type="1"><li>使用数学公式参见<code>LaTe常用表达式</code></li><li>使用<code>Mermaid</code>画图参见<code>Mermaid语法</code></li></ol><h2 id="快捷键">快捷键</h2><p>使用typora的时候，进入源代码模式可以使用<code>⌘command+/</code></p><h2 id="嵌入视频">嵌入视频</h2><ul><li>https://support.typora.io/Media/</li><li>https://gist.github.com/tzmartin/1cf85dc3d975f94cfddc04bc0dd399be</li></ul><p>bilibili视频可以按下面的方法嵌入：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"//player.bilibili.com/player.html?aid=754115200&amp;bvid=BV1kk4y1m7sT&amp;cid=220773148&amp;page=1"</span> <span class="attr">scrolling</span>=<span class="string">"no"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">height</span>=<span class="string">"400"</span>  <span class="attr">frameborder</span>=<span class="string">"no"</span> <span class="attr">framespacing</span>=<span class="string">"0"</span> <span class="attr">allowfullscreen</span>=<span class="string">"true"</span>&gt;</span> <span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure><p>YouTube视频可以按下面的方法嵌入：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">width</span>=<span class="string">"560"</span> <span class="attr">height</span>=<span class="string">"400"</span> <span class="attr">src</span>=<span class="string">"https://www.youtube.com/embed/Wz50FvGG6xU"</span> <span class="attr">frameborder</span>=<span class="string">"0"</span>  <span class="attr">allowfullscreen</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="并排插入图片">并排插入图片</h2><p>通过<code>figure</code>标签可以实现在Markdown中并排插入图片：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">figure</span> <span class="attr">class</span> = <span class="string">"half"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">"https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.52.59.png"</span> <span class="attr">width</span> = <span class="string">"350"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">"https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.53.13.png"</span> <span class="attr">width</span> = <span class="string">"350"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure><center><figure class="half">    <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.52.59.png" width="350">    <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.53.13.png" width="350"></figure></center><p>但是这种方法无法在hexo上正常使用，所以如果需要发布的话，优先考虑使用表格的方法：</p><center><table><tr>  <td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.52.59.png" width="350"></td>  <td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.53.13.png" width="350"></td></tr></table></center>]]></content>
+        <content type="html"><![CDATA[<h1 id="markdown语法">Markdown语法</h1><p><a href="https://www.markdownguide.org/getting-started/">Markdown官方教程</a></p><p>Markdown的语法非常丰富，虽然表面上Markdown能做的事很少，但是只要嵌入html就一切皆有可能，在这里我列下可以参考的文档以供快速查找：</p><ol type="1"><li>使用数学公式参见<code>LaTe常用表达式</code></li><li>使用<code>Mermaid</code>画图参见<code>Mermaid语法</code></li></ol><h2 id="快捷键">快捷键</h2><p>使用typora的时候，进入源代码模式可以使用<code>⌘command+/</code></p><h2 id="嵌入视频">嵌入视频</h2><ul><li>https://support.typora.io/Media/</li><li>https://gist.github.com/tzmartin/1cf85dc3d975f94cfddc04bc0dd399be</li></ul><p>bilibili视频可以按下面的方法嵌入：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"//player.bilibili.com/player.html?aid=754115200&amp;bvid=BV1kk4y1m7sT&amp;cid=220773148&amp;page=1"</span> <span class="attr">scrolling</span>=<span class="string">"no"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">height</span>=<span class="string">"400"</span>  <span class="attr">frameborder</span>=<span class="string">"no"</span> <span class="attr">framespacing</span>=<span class="string">"0"</span> <span class="attr">allowfullscreen</span>=<span class="string">"true"</span>&gt;</span> <span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure><p>YouTube视频可以按下面的方法嵌入：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">width</span>=<span class="string">"560"</span> <span class="attr">height</span>=<span class="string">"400"</span> <span class="attr">src</span>=<span class="string">"https://www.youtube.com/embed/Wz50FvGG6xU"</span> <span class="attr">frameborder</span>=<span class="string">"0"</span>  <span class="attr">allowfullscreen</span>&gt;</span><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure><h2 id="并排插入图片">并排插入图片</h2><p>通过<code>figure</code>标签可以实现在Markdown中并排插入图片：</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">figure</span> <span class="attr">class</span> = <span class="string">"half"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">"https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.52.59.png"</span> <span class="attr">width</span> = <span class="string">"350"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">"https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.53.13.png"</span> <span class="attr">width</span> = <span class="string">"350"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure><center><figure class="half">    <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.52.59.png" width="350">    <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.53.13.png" width="350"></figure></center><p>但是这种方法无法在hexo上正常使用，所以如果需要发布的话，优先考虑使用表格的方法：</p><center><table><tr>  <td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.52.59.png" width="350"></td>  <td><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://mdstore.oss-cn-beijing.aliyuncs.com/Screenshot%202023-10-18%20at%2015.53.13.png" width="350"></td></tr></table></center>## 注音<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ruby</span>&gt;</span>ご<span class="tag">&lt;<span class="name">rt</span>&gt;</span><span class="tag">&lt;/<span class="name">rt</span>&gt;</span>飯<span class="tag">&lt;<span class="name">rp</span>&gt;</span>（<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;<span class="name">rt</span>&gt;</span>はん<span class="tag">&lt;/<span class="name">rt</span>&gt;</span><span class="tag">&lt;<span class="name">rp</span>&gt;</span>）<span class="tag">&lt;/<span class="name">rp</span>&gt;</span><span class="tag">&lt;/<span class="name">ruby</span>&gt;</span></span><br></pre></td></tr></table></figure><p><ruby>ご<rt></rt>飯<rp>（</rp><rt>はん</rt><rp>）</rp></ruby></p>]]></content>
       
       
       <categories>
@@ -437,9 +437,9 @@
       
         <tags>
             
-            <tag> internet </tag>
-            
             <tag> DNS </tag>
+            
+            <tag> internet </tag>
             
         </tags>
       
@@ -727,9 +727,9 @@
             
             <tag> 经济 </tag>
             
-            <tag> 美国 </tag>
-            
             <tag> 政治 </tag>
+            
+            <tag> 美国 </tag>
             
         </tags>
       
@@ -816,9 +816,9 @@
       
         <tags>
             
-            <tag> openwrt </tag>
-            
             <tag> internet </tag>
+            
+            <tag> openwrt </tag>
             
             <tag> hardware </tag>
             
@@ -930,9 +930,9 @@
             
             <tag> 经济 </tag>
             
-            <tag> economics </tag>
-            
             <tag> 美国 </tag>
+            
+            <tag> economics </tag>
             
         </tags>
       
@@ -955,17 +955,6 @@
     
     
     <entry>
-      <title>分类</title>
-      <link href="/categories/index.html"/>
-      <url>/categories/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>书籍</title>
       <link href="/books/index.html"/>
       <url>/books/index.html</url>
@@ -977,9 +966,20 @@
     
     
     <entry>
-      <title>我的音乐</title>
-      <link href="/music/index.html"/>
-      <url>/music/index.html</url>
+      <title>分类</title>
+      <link href="/categories/index.html"/>
+      <url>/categories/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>电影</title>
+      <link href="/films/index.html"/>
+      <url>/films/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -999,9 +999,9 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/films/index.html"/>
-      <url>/films/index.html</url>
+      <title>我的音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
