@@ -967,6 +967,7 @@ mermaid:
     light: default
     dark: dark
 
+
 # Note (Bootstrap Callout)
 note:
   # Note tag style values:
