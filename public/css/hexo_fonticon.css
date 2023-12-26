@@ -1,0 +1,208 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4386068 */
+  src: url('//at.alicdn.com/t/c/font_4386068_jyw2ngj3qy.woff2?t=1703613086770') format('woff2'),
+       url('//at.alicdn.com/t/c/font_4386068_jyw2ngj3qy.woff?t=1703613086770') format('woff'),
+       url('//at.alicdn.com/t/c/font_4386068_jyw2ngj3qy.ttf?t=1703613086770') format('truetype'),
+       url('//at.alicdn.com/t/c/font_4386068_jyw2ngj3qy.svg?t=1703613086770#iconfont') format('svg');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.hexo-home:before {
+  content: "\e626";
+}
+
+.hexo-physics-world:before {
+  content: "\e63d";
+}
+
+.hexo-fenlei:before {
+  content: "\e658";
+}
+
+.hexo-meiguoyiliao:before {
+  content: "\e61c";
+}
+
+.hexo-qian:before {
+  content: "\e67c";
+}
+
+.hexo-jingji:before {
+  content: "\e65e";
+}
+
+.hexo-lishi:before {
+  content: "\e608";
+}
+
+.hexo-qian1:before {
+  content: "\e783";
+}
+
+.hexo-jishufuwu:before {
+  content: "\ebce";
+}
+
+.hexo-hulianwangIT:before {
+  content: "\e60f";
+}
+
+.hexo-kexuejishu-:before {
+  content: "\e997";
+}
+
+.hexo-kexuejishu-1:before {
+  content: "\e998";
+}
+
+.hexo-kexuejishu-2:before {
+  content: "\e99b";
+}
+
+.hexo-kexuejishu-3:before {
+  content: "\e99d";
+}
+
+.hexo-kexuejishu-4:before {
+  content: "\e9ae";
+}
+
+.hexo-kexuejishu-5:before {
+  content: "\e9af";
+}
+
+.hexo-kexuejishu-6:before {
+  content: "\e9b0";
+}
+
+.hexo-kexuejishu-7:before {
+  content: "\e9ba";
+}
+
+.hexo-kexuejishu-8:before {
+  content: "\e9c0";
+}
+
+.hexo-about:before {
+  content: "\e687";
+}
+
+.hexo-24gf-tags2:before {
+  content: "\e887";
+}
+
+.hexo-project:before {
+  content: "\e60b";
+}
+
+.hexo-zhiliangjishu:before {
+  content: "\e8ba";
+}
+
+.hexo-jishu-line:before {
+  content: "\e613";
+}
+
+.hexo-linux:before {
+  content: "\e80b";
+}
+
+.hexo--math:before {
+  content: "\e661";
+}
+
+.hexo-riben-fushishan:before {
+  content: "\e654";
+}
+
+.hexo-fabujishu:before {
+  content: "\e695";
+}
+
+.hexo-mathworks:before {
+  content: "\ec09";
+}
+
+.hexo-sheji_huatu:before {
+  content: "\e68e";
+}
+
+.hexo-odbc-full:before {
+  content: "\e93a";
+}
+
+.hexo-Python:before {
+  content: "\e891";
+}
+
+.hexo-torii-gate:before {
+  content: "\e84e";
+}
+
+.hexo-Infinity:before {
+  content: "\e6e2";
+}
+
+.hexo-JavaScript:before {
+  content: "\e7c8";
+}
+
+.hexo-copy:before {
+  content: "\e600";
+}
+
+.hexo-gear:before {
+  content: "\e601";
+}
+
+.hexo-images:before {
+  content: "\e602";
+}
+
+.hexo-list-ul:before {
+  content: "\e603";
+}
+
+.hexo-tag:before {
+  content: "\e604";
+}
+
+.hexo-bilibili:before {
+  content: "\e605";
+}
+
+.hexo-paper-plane:before {
+  content: "\e606";
+}
+
+.hexo-circle-info:before {
+  content: "\e607";
+}
+
+.hexo-books:before {
+  content: "\e64b";
+}
+
+.hexo-film:before {
+  content: "\e6f4";
+}
+
+.hexo-wechat:before {
+  content: "\e758";
+}
+
+.hexo-QQ:before {
+  content: "\e882";
+}
+
+.hexo-github:before {
+  content: "\e709";
+}
+

@@ -78,7 +78,7 @@ copy:
 # formal:
 #   name: link || icon
 social:
-  Github: https://github.com/Kihara-Ri || hexo-github
+  Github: https://github.com/Kihara-Ri || anzhiyu-icon-github
   # Wechat:
   # BiliBili: https://space.bilibili.com/372204786 || anzhiyu-icon-bilibili
 
@@ -983,8 +983,8 @@ note:
   light_bg_offset: 0
 
 icons:
-  ali_iconfont_js: https://at.alicdn.com/t/c/font_4386068_oq43ulvs9lr.js?spm=a313x.manage_type_myprojects.i1.10.20af3a81EtBtqq&file=font_4386068_oq43ulvs9lr.js # 阿里图标symbol 引用链接，主题会进行加载 symbol 引用
-  fontawesome: true #是否启用fontawesome6图标
+  ali_iconfont_js: https://at.alicdn.com/t/c/font_4386068_jyw2ngj3qy.js?spm=a313x.manage_type_myprojects.i1.10.20af3a81sdBpCa&file=font_4386068_jyw2ngj3qy.js # 阿里图标symbol 引用链接，主题会进行加载 symbol 引用
+  fontawesome: false #是否启用fontawesome6图标
   fontawesome_animation_css: #fontawesome_animation 如果有就会加载，示例值：https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/assets/font-awesome-animation.min.css
 
 # other
@@ -1136,8 +1136,8 @@ comment_barrage_config:
 nav_music:
   enable: true
   console_widescreen_music: false # 宽屏状态控制台显示音乐而不是标签 enable为true 控制台依然会显示
-  id: 8152976493
-  server: netease
+  id: 627498162
+  server: tencent
   volume: 0.7 # 默认音量
   all_playlist: https://y.qq.com/n/ryqq/playlist/627498162
 
@@ -1244,6 +1244,7 @@ inject:
   head:
     # 自定义css
     # - <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'">
+    - <link rel="stylesheet" href="/css/hexo_fonticon.css">
     # 网页图标，查看：https://realfavicongenerator.net/
     - <link rel="apple-touch-icon" sizes="180x180" href="/img/siteicon/apple-touch-icon.png">
     - <link rel="icon" type="image/png" sizes="32x32" href="/img/siteicon/img/siteicon/favicon-32x32.png">

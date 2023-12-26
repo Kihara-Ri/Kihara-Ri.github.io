@@ -121,7 +121,7 @@ bangumi: # 追番设置
   source: bili
   path:
   vmid: 631081975
-  title: "追番列表"
+  title: "番剧列表"
   quote: "一般不看战斗番"
   show: 1
   lazyload: false
