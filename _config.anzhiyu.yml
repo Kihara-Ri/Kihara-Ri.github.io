@@ -156,7 +156,7 @@ favicon: /img/favicon.ico
 
 # Avatar (头像)
 avatar:
-  img: /images/Avator.png
+  img: /img/Avator.png
   effect: false
 
 # Disable all banner image
