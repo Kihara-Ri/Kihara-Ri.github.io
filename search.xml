@@ -134,13 +134,13 @@
             
             <tag> mathematics </tag>
             
-            <tag> 绘图 </tag>
-            
             <tag> optimization </tag>
             
             <tag> gradient descent </tag>
             
             <tag> 算法 </tag>
+            
+            <tag> 绘图 </tag>
             
             <tag> machine learning </tag>
             
@@ -219,9 +219,9 @@
       
         <tags>
             
-            <tag> 语法 </tag>
-            
             <tag> Mermaid </tag>
+            
+            <tag> 语法 </tag>
             
             <tag> 画图 </tag>
             
@@ -936,9 +936,9 @@
             
             <tag> python </tag>
             
-            <tag> matplotlib </tag>
-            
             <tag> data </tag>
+            
+            <tag> matplotlib </tag>
             
         </tags>
       
@@ -1102,17 +1102,6 @@
     
     
     <entry>
-      <title>电影</title>
-      <link href="/films/index.html"/>
-      <url>/films/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>分类</title>
       <link href="/categories/index.html"/>
       <url>/categories/index.html</url>
@@ -1135,9 +1124,9 @@
     
     
     <entry>
-      <title>标签</title>
-      <link href="/tags/index.html"/>
-      <url>/tags/index.html</url>
+      <title>电影</title>
+      <link href="/films/index.html"/>
+      <url>/films/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -1149,6 +1138,17 @@
       <title>我的音乐</title>
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>标签</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
