@@ -1,0 +1,648 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux入门 | Kihara Ri</title><meta name="author" content="Kihara Ri"><meta name="copyright" content="Kihara Ri"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="个人认为shell指令及脚本应当属于计算机的入门内容，这些较为底层的命令虽然不如高级语言那么容易明白，但好在常用的指令并不算多，而且对开发的效率及思维的广度有非常大的提升，可以说能写好shell，就掌握了Linux系统，对之后的开发有事半功倍的效果 环境变量 环境变量(environment variable) are things that are set whenever you start">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux入门">
+<meta property="og:url" content="https://limuyuan.top/posts/Linux%E5%85%A5%E9%97%A8.html">
+<meta property="og:site_name" content="Kihara Ri">
+<meta property="og:description" content="个人认为shell指令及脚本应当属于计算机的入门内容，这些较为底层的命令虽然不如高级语言那么容易明白，但好在常用的指令并不算多，而且对开发的效率及思维的广度有非常大的提升，可以说能写好shell，就掌握了Linux系统，对之后的开发有事半功倍的效果 环境变量 环境变量(environment variable) are things that are set whenever you start">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://limuyuan.top/img/default_cover6.png">
+<meta property="article:published_time" content="2023-12-11T14:28:35.000Z">
+<meta property="article:modified_time" content="2024-02-24T09:13:41.770Z">
+<meta property="article:author" content="Kihara Ri">
+<meta property="article:tag" content="shell">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://limuyuan.top/img/default_cover6.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://limuyuan.top/posts/Linux%E5%85%A5%E9%97%A8.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Kihara Ri","link":"链接: ","source":"来源: Kihara Ri","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux入门',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-02-24 17:13:41'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 21
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4386068_jyw2ngj3qy.css"><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/Avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">83</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont hexo-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont hexo-bilibili"></i><span> 番剧</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont hexo-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont hexo-books"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont hexo-circle-info"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_cover6.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Kihara Ri"><img class="site-icon" src="/img/Avator.png"/><span class="site-name">Kihara Ri</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont hexo-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont hexo-bilibili"></i><span> 番剧</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont hexo-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont hexo-books"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont hexo-circle-info"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-11T14:28:35.000Z" title="发表于 2023-12-11 22:28:35">2023-12-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-02-24T09:13:41.770Z" title="更新于 2024-02-24 17:13:41">2024-02-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.9k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>个人认为shell指令及脚本应当属于计算机的入门内容，这些较为底层的命令虽然不如高级语言那么容易明白，但好在常用的指令并不算多，而且对开发的效率及思维的广度有非常大的提升，可以说能写好shell，就掌握了Linux系统，对之后的开发有事半功倍的效果</p>
+<h2 id="环境变量">环境变量</h2>
+<p>环境变量(environment variable) are things that are set whenever you
+start your shell, they are not things you have to set every time you run
+your shell</p>
+<p>路径变量(path variable)<code>$</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="用户权限">用户权限</h2>
+<p>首先应该了解的就是用户权限，我们在使用命令操作各种文件时，经常会碰到没有权限执行的情况，导致命令执行失败，然后经常会导致各种报错找不到原因，所以首先了解权限是非常有必要的事情，这里主要以Linux系统为例，macOS下的操作与Linux几乎没有差别</p>
+<p>Linux系统是典型的多用户系统，那么既然有用户，用户之间也有不同的地位，所以也就有着不同的权限，比如<code>root</code>用户就是系统管理员，拥有系统的完全掌控权</p>
+<p>通常使用这两个命令来修改文件或目录 (<code>file</code> and
+<code>directory</code>)的所属用户与权限：</p>
+<ul>
+<li><code>chown</code>(change
+owner)：修改所属用户与组，<code>user</code> and <code>group</code></li>
+<li><code>chmod</code>(change mode)：修改用户的权限</li>
+</ul>
+<p><code>chown</code>用来给用户授权，<code>chmod</code>用来设置权限</p>
+<p>使用<code>ls -l</code>查看当前目录文件权限</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l</span></span><br><span class="line">total 192</span><br><span class="line">-rw-r--r--@ 1 kiharari  staff   4787 Nov  9 15:13 Python抓取行政区划地理信息.md</span><br><span class="line">-rw-r--r--@ 1 kiharari  staff  47617 Nov  8 13:44 districts.ipynb</span><br><span class="line">-rw-r--r--@ 1 kiharari  staff    634 Dec 14 19:22 geocoordtrans.html</span><br><span class="line">-rw-r--r--  1 kiharari  staff   1932 Dec 14 19:30 geocoordtrans.js</span><br><span class="line">-rw-r--r--  1 kiharari  staff   1366 Dec 14 18:45 trans.js</span><br><span class="line">-rw-r--r--@ 1 kiharari  staff   8259 Dec 14 19:46 地理坐标转换.md</span><br><span class="line">drwxr-xr-x  6 kiharari  staff    192 Nov  8 13:41 津南区</span><br><span class="line">-rw-r--r--  1 kiharari  staff  11469 Nov  8 13:43 津南区.json</span><br><span class="line">-rw-r--r--  1 kiharari  staff    278 Dec 14 18:45 转换然后显示.html</span><br></pre></td></tr></table></figure>
+
+<p>如果你的英语足够ok的话，我建议学习下面的课程，它将包含基础的Linux命令的使用，其中还有对管道<code>|</code>的解释，使用简单命令控制系统底层的状态，如屏幕亮度等，通过这些简单的命令的组织来达成更复杂的操作</p>
+<p><a target="_blank" rel="noopener" href="https://ty-chen.github.io/linux-kernel-pipe/">https://ty-chen.github.io/linux-kernel-pipe/</a></p>
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z56Jmr9Z34Q?si=iAPKTk9mTqBaY5_L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+</center>
+`echo`用于显示，如果要显示的字符含有空格，可以有下面两种处理方法：
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"hello world"</span></span><br><span class="line"><span class="built_in">echo</span> hello\  world</span><br></pre></td></tr></table></figure>
+
+<p>为了展示<code>echo</code>的真正威力，我们往往需要结合其他的命令，来形成一个复杂的命令，事实上，命令之间的组合能够实现很多的功能</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> hello  &gt;  hello.md</span><br></pre></td></tr></table></figure>
+
+<p>这个命令将会创建一个<code>hello.md</code>的文件，并将<code>hello</code>内容写入文件，在使用这个命令后，终端并不会显示<code>hello</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span>  hello.md</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"><span class="built_in">cat</span> &lt; hello.md</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>cat</code>命令将会显示出<code>hello.md</code>文件中的内容，可以认为<code>cat</code>简单地复制了<code>hello.md</code>中的内容作为输出。如果你想通过<code>cat</code>进行复制，又不想用<code>cp</code>命令，可以使用如下的方法：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt; hello.md &gt; hello2.md</span><br></pre></td></tr></table></figure>
+
+<p>还可以使用<code>&gt;&gt;</code>作为附加而不是覆盖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt; hello.md &gt;&gt; hello2.md</span><br></pre></td></tr></table></figure>
+
+<p><code>|</code>pipe，作用是把程序的输出放在左侧，程序的输入放在右侧</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo su</span><br></pre></td></tr></table></figure>
+
+<p>进入<code>root</code></p>
+<p>下面的这个视频会介绍shell工具和脚本的构建</p>
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kgII-YWo3Zw?si=XfF6PtoRecXs_s9q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+</center>
+`$_`这个符号可以将上一个命令作为参数的一部分
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> <span class="built_in">test</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$_</span></span><br></pre></td></tr></table></figure>
+
+<p>加入你创建了一个<code>test</code>文件夹，然后在下个命令你可以直接使用<code>$_</code>来代指它，从而直接进行操作</p>
+<p><strong>逻辑操作</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="literal">false</span> || <span class="built_in">echo</span> <span class="string">"Oops fail"</span></span><br><span class="line">&gt; Oops fail</span><br></pre></td></tr></table></figure>
+
+<p><code>||</code>将会以OR的逻辑运行，如果左边的值为<code>false</code>，那么就会尝试运行右边的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="literal">true</span> &amp;&amp; <span class="built_in">echo</span> <span class="string">"Things went well"</span></span><br><span class="line">&gt; Things went well</span><br></pre></td></tr></table></figure>
+
+<p><code>&amp;&amp;</code>AND，如果左边的值为<code>true</code>，那么就会运行右边的，否则就不会运行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="literal">false</span>;<span class="built_in">echo</span> <span class="string">"This will always print"</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>;</code>，无论是否正确，都会运行</p>
+<p><strong>Command substitution</strong></p>
+<p><code>$()</code>可以用来做变量的替换，类似于python中的<code>{}</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"We are in <span class="subst">$(pwd)</span>"</span></span><br></pre></td></tr></table></figure>
+
+<p>这将会输出当前路径</p>
+<p><strong>Process subtitution</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> &lt;(<span class="built_in">ls</span>) &lt;(<span class="built_in">ls</span> ..)</span><br></pre></td></tr></table></figure>
+
+<p>这个命令将会打印出当前目录和父目录下的文件名，以无缝衔接的形式</p>
+<p><strong>通配符</strong></p>
+<p>如果我们想将<code>image.png</code>转换为<code>image.jpg</code>，可以使用下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">convert image.png image.jpg</span><br></pre></td></tr></table></figure>
+
+<p>我们也可以这样做：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">convert image.{png, jpg}</span><br></pre></td></tr></table></figure>
+
+<p>对于这些接受多个参数的命令，我们都可以这样做，使得命令变得简洁，也可以用这种方法创建多个相似名称的文件：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> project{1,2}</span><br><span class="line"><span class="built_in">touch</span> project{1,2}/test{1,2,3}.py </span><br></pre></td></tr></table></figure>
+
+<p>这样我们就能快速创建两个<code>project1</code>,
+<code>project2</code>目录，并且分别在这两个文件夹下创建三个python文件了</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> foo bar</span><br><span class="line"><span class="built_in">touch</span> {foo,bar}/{a..j}</span><br></pre></td></tr></table></figure>
+
+<p>我们甚至可以以这样的方法进行遍历，按下<code>tab</code>⇥就可以自动展开，⚠️注意，<strong>不要有空格！</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> foo/a foo/b foo/c foo/d foo/e foo/f foo/g foo/h foo/i foo/j bar/a bar/b bar/c bar/d bar/e bar/f bar/g bar/h bar/i bar/j</span><br></pre></td></tr></table></figure>
+
+<p>然后我们就能得到这么多文件，现在我们再分别在这两个文件夹中加上两个不同的文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> foo/x bar/y</span><br><span class="line">diff &lt;(<span class="built_in">ls</span> foo) &lt;(<span class="built_in">ls</span> bar)</span><br><span class="line"></span><br><span class="line">11c11</span><br><span class="line">&lt; x</span><br><span class="line">---</span><br><span class="line">&gt; y</span><br></pre></td></tr></table></figure>
+
+<p>我们发现成功找到了两个文件夹中的不同文件</p>
+<h2 id="python脚本">python脚本</h2>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#!/usr/local/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> arg <span class="keyword">in</span> <span class="built_in">reversed</span>(sys.argv[<span class="number">1</span>:]):</span><br><span class="line">  		    <span class="built_in">print</span>(arg)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>第一行的声明叫做<strong>shebang</strong>，用来告诉shell该程序的运行方式，不同的机器可能有不同的放置python的位置，因此可以这样声明：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env python</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>手册</strong></p>
+<p>通常情况下可以使用<code>man</code>命令来查看一些常用的命令，但是终归不太好用，可以尝试下面的工具</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tldr-pages/tldr">https://github.com/tldr-pages/tldr</a></p>
+<p>这样，在寻求一些比较复杂的库的命令操作时可以比较快速地找到需要的命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tldr ffmpeg</span><br></pre></td></tr></table></figure>
+
+<img src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/image-20240223233428536.png" alt="image-20240223233428536" style="zoom:50%;">
+
+<p><code>find</code>命令</p>
+<p>如果我们要寻找特定文件，可以：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -name src -<span class="built_in">type</span> d</span><br></pre></td></tr></table></figure>
+
+<p><code>-name</code>参数后面跟上文件名称，<code>-type</code>参数后面跟上文件类型，<code>d</code>代表目录，<code>f</code>代表文件</p>
+<p>更多：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tldr find</span><br></pre></td></tr></table></figure>
+
+<p>我们尝试一下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> {1..10}.tmp</span><br><span class="line">find . -name <span class="string">"*.tmp"</span></span><br><span class="line"></span><br><span class="line">./6.tmp</span><br><span class="line">./7.tmp</span><br><span class="line">./5.tmp</span><br><span class="line">./4.tmp</span><br><span class="line">./1.tmp</span><br><span class="line">./3.tmp</span><br><span class="line">./2.tmp</span><br><span class="line">./9.tmp</span><br><span class="line">./8.tmp</span><br><span class="line">./10.tmp</span><br></pre></td></tr></table></figure>
+
+<p>遍历创建了十个这样的<code>*.tmp</code>文件，然后我们尝试删除它们：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">find . -name <span class="string">"*.tmp"</span> -<span class="built_in">exec</span> <span class="built_in">rm</span> {} \;</span><br><span class="line"><span class="built_in">echo</span> $?</span><br></pre></td></tr></table></figure>
+
+<p>运行第一行代码后终端不会有任何反应，实际上已经将文件删除，第二行代码会返回<code>0</code>告诉我们代码正确执行</p>
+<p>使用<code>history</code>命令查找使用过的命令</p>
+<p>我们使用<code>history</code>命令后，终端会列举出我们使用过的所有命令，这未免有点太多了，可以配合之前学的命令组合来筛选：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">history</span> 1 | grep find</span><br></pre></td></tr></table></figure>
+
+<p>这样，就只会打印出使用过的<code>find</code>命令了</p>
+<p><strong>小工具</strong></p>
+<p>使用工具<code>fzf</code>来进行模糊查找：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/junegunn/fzf">https://github.com/junegunn/fzf</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">  brew install fzf</span><br><span class="line"></span><br><span class="line"><span class="comment"># To install useful key bindings and fuzzy completion:</span></span><br><span class="line">$(brew --prefix)/opt/fzf/install</span><br></pre></td></tr></table></figure>
+
+<p>交互式树状查找：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Canop/broot">https://github.com/Canop/broot</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">brew install broot</span><br></pre></td></tr></table></figure>
+
+<h3 id="linux-命令行编辑快捷键">Linux 命令行编辑快捷键</h3>
+<p>初学者在Linux命令窗口（终端）敲命令时，肯定觉得通过输入一串一串的字符的方式来控制计算是效率很低。
+但是Linux命令解释器（Shell）是有很多快捷键的，熟练掌握可以极大的提高操作效率。
+下面列出最常用的快捷键</p>
+<ul>
+<li>命令行快捷键：
+<ul>
+<li>常用：
+<ul>
+<li><strong>Ctrl L</strong> ：清屏</li>
+<li><strong>Ctrl M</strong> ：等效于回车</li>
+<li><strong>Ctrl C</strong> : 中断正在当前正在执行的程序</li>
+</ul></li>
+<li>历史命令：
+<ul>
+<li><strong>Ctrl P</strong> : 上一条命令，可以一直按表示一直往前翻</li>
+<li><strong>Ctrl N</strong> : 下一条命令</li>
+<li><strong>Ctrl
+R</strong>，再按历史命令中出现过的字符串：按字符串寻找历史命令（重度推荐）</li>
+</ul></li>
+<li>命令行编辑：
+<ul>
+<li><strong>Tab</strong> : 自动补齐（重度推荐）</li>
+<li><strong>Ctrl A</strong> ： 移动光标到命令行首</li>
+<li><strong>Ctrl E</strong> : 移动光标到命令行尾</li>
+<li><strong>Ctrl B</strong> : 光标后退</li>
+<li><strong>Ctrl F</strong> : 光标前进</li>
+<li><strong>Alt F</strong> : 光标前进一个单词</li>
+<li><strong>Alt B</strong> : 光标后退一格单词</li>
+<li><strong>Ctrl ]</strong> :
+从当前光标往后搜索字符串，用于快速移动到该字符串</li>
+<li><strong>Ctrl Alt ]</strong> :
+从当前光标往前搜索字符串，用于快速移动到该字符串</li>
+<li><strong>Ctrl H</strong> : 删除光标的前一个字符</li>
+<li><strong>Ctrl D</strong> : 删除当前光标所在字符</li>
+<li><strong>Ctrl K</strong> ：删除光标之后所有字符</li>
+<li><strong>Ctrl U</strong> : 清空当前键入的命令</li>
+<li><strong>Ctrl W</strong> : 删除光标前的单词(Word,
+不包含空格的字符串)</li>
+<li>**Ctrl \ ** : 删除光标前的所有空白字符</li>
+<li><strong>Ctrl Y</strong> : 粘贴<strong>Ctrl W</strong>或<strong>Ctrl
+K</strong>删除的内容</li>
+<li><strong>Alt .</strong> : 粘贴上一条命令的最后一个参数（很有用）</li>
+<li><strong>Alt [0-9] Alt .</strong> 粘贴上一条命令的第[0-9]个参数</li>
+<li><strong>Alt [0-9] Alt . Alt.</strong>
+粘贴上上一条命令的第[0-9]个参数</li>
+<li><strong>Ctrl X Ctrl E</strong> :
+调出系统默认编辑器编辑当前输入的命令，退出编辑器时，命令执行</li>
+</ul></li>
+<li>其他：
+<ul>
+<li><strong>Ctrl Z</strong> :
+把当前进程放到后台（之后可用’’fg’’命令回到前台）</li>
+<li><strong>Shift Insert</strong> : 粘贴（相当于Windows的<strong>Ctrl
+V</strong>）</li>
+<li>在命令行窗口选中即复制</li>
+<li>在命令行窗口中键即粘贴，可用<strong>Shift Insert</strong>代替</li>
+<li><strong>Ctrl PageUp</strong> : 屏幕输出向上翻页</li>
+<li><strong>Ctrl PageDown</strong> : 屏幕输出向下翻页</li>
+</ul></li>
+</ul></li>
+</ul>
+<h2 id="vim使用">Vim使用</h2>
+<p><a target="_blank" rel="noopener" href="https://yianwillis.github.io/vimcdoc/doc/help.html">https://yianwillis.github.io/vimcdoc/doc/help.html</a></p>
+<h3 id="vim逻辑">Vim逻辑</h3>
+<pre class="mermaid">graph LR
+
+N(normal)
+
+N --&gt;|i|i(insert)
+N --&gt;|r|r(replace)
+N --&gt;|v|v(visual)
+N --&gt;|shift+v|l(line)
+N --&gt;|control+v|b(block)
+N --&gt;|:|i(command line)</pre>
+
+<p>为什么存在normal mode ？</p>
+<p>需要将Vim的interface理解为一种编程语言，通过各种不同的命令和操作组合来进行Vim编程和对话</p>
+<p>普通模式下，我们位于缓冲区buffer</p>
+<p>使用<code>w</code>将光标向前移动一个单词(word)，注意不是一个字母，同样<code>b</code>将光标向后移动一个单词，’e’将光标移动到单词的末尾,这些操作在中文中就是以一句话为单位的，分隔符为逗号句号等。‘0’移动到行的最开头，’$‘移动到行的末尾，’^’移动到行上的第一个非空字符</p>
+<p>使用<code>f</code>来进行查找，如果行中有字母<code>v</code>，在缓冲区输入<code>fv</code>就能自动跳转到第一个，然后可以进行迭代到下一个，如果要返回到上一个，使用<code>Fv</code>来回退</p>
+<p>类似的命令还有<code>t</code>，跳转到后面的一格</p>
+<p>使用<code>dw</code>来删除一个单词，使用<code>de</code>删除到单词末尾（前面的部分不删除）</p>
+<p>使用<code>r</code>来replace字符，替换光标上的字符</p>
+<p>使用<code>u</code>来undo撤销更改</p>
+<p>使用<code>y</code>来进行copy，是yank的缩写，使用<code>p</code>来进行paste</p>
+<p>使用<code>yy</code>可以复制当前行，<code>yw</code>复制一个单词</p>
+<p>视觉模式<code>v</code>，可以使用<code>V</code>来进行整行的选择，使用<code>control + v</code>选择矩形块</p>
+<p>更改vim设置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/.vimrc</span><br></pre></td></tr></table></figure>
+
+<p>参考：<a target="_blank" rel="noopener" href="https://github.com/amix/vimrc">https://github.com/amix/vimrc</a></p>
+<h2 id="references">References</h2>
+<ol type="1">
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-file-attr-permission.html">https://www.runoob.com/linux/linux-file-attr-permission.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Z56Jmr9Z34Q">https://www.youtube.com/watch?v=Z56Jmr9Z34Q</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=kgII-YWo3Zw">https://www.youtube.com/watch?v=kgII-YWo3Zw</a></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://limuyuan.top">Kihara Ri</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://limuyuan.top/posts/Linux%E5%85%A5%E9%97%A8.html">https://limuyuan.top/posts/Linux入门.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://limuyuan.top" target="_blank">Kihara Ri</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/shell/">shell</a><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post_share"><div class="social-share" data-image="/img/default_cover6.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/c8fdcefd.html" title="概率论与统计学习"><img class="cover" src="/img/default_cover3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">概率论与统计学习</div></div></a></div><div class="next-post pull-right"><a href="/posts/d1768b01.html" title="東京都路線図"><img class="cover" src="/img/default_cover1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">東京都路線図</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/5e168f7e.html" title="快速搭建环境"><img class="cover" src="/img/default_cover4.png" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-12-26</div><div class="title">快速搭建环境</div></div></a></div><div><a href="/posts/f479e4d4.html" title="blog文章构建脚本"><img class="cover" src="/img/default_cover1.png" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-12-26</div><div class="title">blog文章构建脚本</div></div></a></div><div><a href="/posts/6457b245.html" title="下载工具"><img class="cover" src="/img/default_cover5.png" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-12-26</div><div class="title">下载工具</div></div></a></div><div><a href="/posts/ba2ef824.html" title="多个python的解决方案"><img class="cover" src="/img/default_cover1.png" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-12-26</div><div class="title">多个python的解决方案</div></div></a></div><div><a href="/posts/c022ec35.html" title="在服务器上跑Jupyter"><img class="cover" src="/images/Jupyter_logo.png" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-12-26</div><div class="title">在服务器上跑Jupyter</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/Avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Kihara Ri</div><div class="author-info__description">我还没想好😳</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">47</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">83</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">8</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Kihara-Ri" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90"><span class="toc-number">2.</span> <span class="toc-text">用户权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E8%84%9A%E6%9C%AC"><span class="toc-number">3.</span> <span class="toc-text">python脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#linux-%E5%91%BD%E4%BB%A4%E8%A1%8C%E7%BC%96%E8%BE%91%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">3.1.</span> <span class="toc-text">Linux 命令行编辑快捷键</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vim%E4%BD%BF%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">Vim使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#vim%E9%80%BB%E8%BE%91"><span class="toc-number">4.1.</span> <span class="toc-text">Vim逻辑</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">5.</span> <span class="toc-text">References</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95.html" title="最小二乘法"><img src="/img/default_cover4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="最小二乘法"/></a><div class="content"><a class="title" href="/posts/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95.html" title="最小二乘法">最小二乘法</a><time datetime="2024-03-03T13:00:34.000Z" title="发表于 2024-03-03 21:00:34">2024-03-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/PID%E7%AE%97%E6%B3%95.html" title="PID算法"><img src="/img/default_cover4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="PID算法"/></a><div class="content"><a class="title" href="/posts/PID%E7%AE%97%E6%B3%95.html" title="PID算法">PID算法</a><time datetime="2024-02-23T09:09:16.000Z" title="发表于 2024-02-23 17:09:16">2024-02-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%BE%A4%E8%AE%BA%E5%9F%BA%E7%A1%80.html" title="群论基础"><img src="/img/default_cover1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="群论基础"/></a><div class="content"><a class="title" href="/posts/%E7%BE%A4%E8%AE%BA%E5%9F%BA%E7%A1%80.html" title="群论基础">群论基础</a><time datetime="2024-01-30T13:10:48.000Z" title="发表于 2024-01-30 21:10:48">2024-01-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%A5%E9%97%A8.html" title="密码学入门"><img src="/img/default_cover4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="密码学入门"/></a><div class="content"><a class="title" href="/posts/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%A5%E9%97%A8.html" title="密码学入门">密码学入门</a><time datetime="2024-01-29T08:10:40.000Z" title="发表于 2024-01-29 16:10:40">2024-01-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/undefined.html" title="认识高斯积分"><img src="/img/default_cover4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="认识高斯积分"/></a><div class="content"><a class="title" href="/posts/undefined.html" title="认识高斯积分">认识高斯积分</a><time datetime="2024-01-06T16:43:58.000Z" title="发表于 2024-01-07 00:43:58">2024-01-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Kihara Ri</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">海内存知己，天涯若比邻</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
