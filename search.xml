@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>七桥问题</title>
+      <link href="/posts/%E4%B8%83%E6%A1%A5%E9%97%AE%E9%A2%98.html"/>
+      <url>/posts/%E4%B8%83%E6%A1%A5%E9%97%AE%E9%A2%98.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="问题抽象">问题抽象</h2><p>七桥问题讲的是哥尼斯堡有七座桥，现在要一次不重复地走过七座桥</p><img src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/seven_bridge.png" alt="seven_bridge" style="zoom:50%;"><p>如果我们想将这个问题当作数学问题来解决，我们需要对问题中出现的元素进行一些抽象和简化，以更好地形成数学概念并且应用数学方法解决</p><p>欧拉在思考这个问题时，认为七桥问题与岛的形状、大小没有关系，与河岸的形状、长短没有关系，与桥的形状、长短也没有关系，重要的、有关系的是桥与桥、桥与河岸、桥与岛、岛与河岸的位置关系</p><p>于是欧拉首先把岛和岸都抽象成点，把桥抽象成线，原来的问题就转化为“不重复地走遍这七条线”</p><p>问题可以抽象为点之间这样的连接关系</p><img src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/bridgesabstract.png" alt="bridgesabstract" style="zoom: 50%;"><p>然后欧拉把哥尼斯堡七桥问题抽象成“一笔画问题”：笔尖不离开纸面，一笔画出给定的点线图，不允许重复过任何一条线（可以重复过点），这样的点线图简称为“一笔画”。现在要解决的问题是：找到“一个点线图是一笔画”的充分必要条件，并对是一笔画的点线图给出一笔画的方法</p><p>欧拉发现，能够一笔画的点线图都必须是“连通”的，然后注意到每个点都是若干条线的端点，他把点线图上的点分成两类：</p><ul><li>如果以某点为端点的线有偶数条，就称此点为偶节点</li><li>如果以某点为端点的线有奇数条，就称此点为奇节点</li></ul><p>因此如果我们要不重复地走完七座桥，那么展开的拓扑关系应该是这样的：</p><p><img src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/linebridges.png" alt="linebridges"></p><p>我们可以把其中的点分为两类：端点和中间点</p><p>对于端点，我们可以发现，连接数有两种情况：作为起点时流出，作为终点时流入；同时作为起点和终点时，流入和流出。因此端点可以存在有奇数个点连接的情况，但是端点只能存在两个</p><p>对于中间点，我们发现必然有流入和流出，因此中间点连接的点必然为偶数个</p><h2 id="references">References</h2><ol type="1"><li><a href="https://www.bilibili.com/video/BV1SK421y75P/">图论欧拉公式，从散步迷题引出的数学分支</a></li><li>《数学文化》（第二版）——顾沛，p67-79</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> mathematics </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> graph theory </tag>
+            
+            <tag> Euler </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VSCode背景图配置</title>
       <link href="/posts/VSCode%E8%83%8C%E6%99%AF%E5%9B%BE%E8%AE%BE%E7%BD%AE.html"/>
       <url>/posts/VSCode%E8%83%8C%E6%99%AF%E5%9B%BE%E8%AE%BE%E7%BD%AE.html</url>
