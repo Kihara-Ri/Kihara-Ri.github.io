@@ -1,0 +1,513 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>我在做的 | Kihara Ri</title><meta name="author" content="Kihara Ri"><meta name="copyright" content="Kihara Ri"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="What I’m doing 高斯积分与中心极限定理、正态分布 math map 计算机图形学——甜甜圈 线性代数基础 卷积 傅立叶变换 拉普拉斯变换 矩阵旋转 欧拉公式 密码学 五次方程与群论 巴塞尔问题 黎曼函数 解析延拓 调和级数 Learning 我正在看的书  《深度学习入门》——斋藤康毅 《控制之美[卷一]》——王天威 《陶哲轩实分析》——陶哲轩 《交通时空大数据分析、挖掘与可视化》—">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我在做的">
+<meta property="og:url" content="https://limuyuan.top/posts/ImDoing.html">
+<meta property="og:site_name" content="Kihara Ri">
+<meta property="og:description" content="What I’m doing 高斯积分与中心极限定理、正态分布 math map 计算机图形学——甜甜圈 线性代数基础 卷积 傅立叶变换 拉普拉斯变换 矩阵旋转 欧拉公式 密码学 五次方程与群论 巴塞尔问题 黎曼函数 解析延拓 调和级数 Learning 我正在看的书  《深度学习入门》——斋藤康毅 《控制之美[卷一]》——王天威 《陶哲轩实分析》——陶哲轩 《交通时空大数据分析、挖掘与可视化》—">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://limuyuan.top/img/default_cover2.png">
+<meta property="article:published_time" content="2024-03-20T14:45:40.000Z">
+<meta property="article:modified_time" content="2024-03-20T14:46:11.316Z">
+<meta property="article:author" content="Kihara Ri">
+<meta property="article:tag" content="tech,折腾党,理工">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://limuyuan.top/img/default_cover2.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://limuyuan.top/posts/ImDoing.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Kihara Ri","link":"链接: ","source":"来源: Kihara Ri","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '我在做的',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-03-20 22:46:11'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 21
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4386068_jyw2ngj3qy.css"><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/Avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">93</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont hexo-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont hexo-bilibili"></i><span> 番剧</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont hexo-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont hexo-books"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont hexo-circle-info"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_cover2.png')"><nav id="nav"><span id="blog-info"><a href="/" title="Kihara Ri"><img class="site-icon" src="/img/Avator.png"/><span class="site-name">Kihara Ri</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont hexo-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont hexo-bilibili"></i><span> 番剧</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont hexo-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont hexo-books"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont hexo-circle-info"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">我在做的</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-03-20T14:45:40.000Z" title="发表于 2024-03-20 22:45:40">2024-03-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-03-20T14:46:11.316Z" title="更新于 2024-03-20 22:46:11">2024-03-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="what-im-doing">What I’m doing</h2>
+<p><strong>高斯积分与中心极限定理、正态分布</strong></p>
+<p><strong>math map</strong></p>
+<p><strong>计算机图形学——甜甜圈</strong></p>
+<p><strong>线性代数基础</strong></p>
+<p><strong>卷积 傅立叶变换 拉普拉斯变换</strong></p>
+<p><strong>矩阵旋转</strong></p>
+<p><strong>欧拉公式</strong></p>
+<p><strong>密码学</strong></p>
+<p><strong>五次方程与群论</strong></p>
+<p><strong>巴塞尔问题</strong></p>
+<p><strong>黎曼函数 解析延拓 调和级数</strong></p>
+<h2 id="learning">Learning</h2>
+<p><strong>我正在看的书</strong></p>
+<ul>
+<li>《深度学习入门》——斋藤康毅</li>
+<li>《控制之美[卷一]》——王天威</li>
+<li>《陶哲轩实分析》——陶哲轩</li>
+<li>《交通时空大数据分析、挖掘与可视化》——余庆</li>
+<li>《日本语》——金田一春彦</li>
+<li><a target="_blank" rel="noopener" href="https://pages.cs.wisc.edu/~remzi/OSTEP/">Operating Systems:
+Three Easy Pieces</a></li>
+</ul>
+<p><strong>我正在学习的课程</strong></p>
+<ul>
+<li>MIT the missing semester <a target="_blank" rel="noopener" href="https://missing.csail.mit.edu">https://missing.csail.mit.edu</a></li>
+<li>NJU PA <a target="_blank" rel="noopener" href="https://nju-projectn.github.io/ics-pa-gitbook/ics2019/">https://nju-projectn.github.io/ics-pa-gitbook/ics2019/</a></li>
+<li>前端基础<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1UW4y1b7L9/?spm_id_from=333.999.0.0&amp;vd_source=abed696091cea364eece1cf5cb2e843d">https://www.bilibili.com/video/BV1UW4y1b7L9/?spm_id_from=333.999.0.0&amp;vd_source=abed696091cea364eece1cf5cb2e843d</a></li>
+</ul>
+<h2 id="thoughts">Thoughts</h2>
+<ul>
+<li>[ ]
+负数为底的对数，为什么我会想到这个，因为很多数学中的基础概念都是我们很早以前学习的内容，它们伴随着强制与粗浅的学习，让我们有一种错觉，这些基础的概念很简单，相反，这些基础的问题反而是数学中最重要的，且随着我们对数学的认识不断深入，那些以前不被允许的行为都有了新的含义，而这总是被我们忽略了，如果要在数学上更精进一步，我们有理由在有一定数学基础后来重新审视这些最基础也最重要的问题</li>
+<li>[ ]
+使用python做一个简单的元胞自动机：给定初始方向，如果：蚂蚁在白色方格上，将这个方格涂黑，左转90度并前进一格；否则，将黑色方格变成白色，右转90度前进一格</li>
+<li>[x] 哥尼斯堡七桥问题-&gt;一笔画问题-&gt;哈密顿问题</li>
+<li>[ ] 赶列车问题，源于泊送分布和排队问题</li>
+<li>[ ] 排序逻辑：冒泡排序，桶排序，堆排序，归并排序到快排算法</li>
+<li>[ ] 如何做一个绘图库，在web端辅助进行动态交互图的绘制</li>
+<li>[x] 使用高德地图API爬取点位</li>
+<li>[ ] 环境领域的检测方法总结</li>
+<li>[ ] 认识各种塑料</li>
+<li>[ ] 绘制桑基图</li>
+<li>[ ] 统计学的基础概念</li>
+<li>[ ] 点乘和叉乘–&gt;参见<a target="_blank" rel="noopener" href="https://space.bilibili.com/88461692">3Blue1Brown</a></li>
+<li>[ ] 二次型</li>
+<li>[ ] 开发markdown编辑插件 侧边栏</li>
+<li>[ ] Neovim的配置</li>
+<li>[ ] 真值表计算，查看安全学导论课程</li>
+<li>[ ] 在R上运行主成分分析</li>
+<li>[ ] 节点化运行stable diffusion–&gt;参见<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1R64y1j7N2/">开源AI社区有多爱苹果电脑？</a></li>
+<li>[ ] CPU加法器的实现</li>
+<li>[ ] 抓取网易云评论，解密和selenium两种方法，爬虫实战参考两期教程：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1cM411H7dr/?spm_id_from=333.1245.0.0&amp;vd_source=abed696091cea364eece1cf5cb2e843d">猿来教育2023年樵夫Python爬虫实战全套教程（爬取图片+小说+招聘数据+视频等）</a>，网易云抓取定位到这一期：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1NX4y1X7AE?p=54&amp;vd_source=abed696091cea364eece1cf5cb2e843d">2023最新最全python爬虫教程【Scrapy框架+js逆向
++分布式爬虫】这还学不会，你来找樵夫！</a></li>
+<li>[ ] 抓取视频网站</li>
+<li>[ ] 实现傅立叶变换，造出三角波</li>
+<li>[ ] 控制论解称球问题</li>
+<li>[x] 最小二乘法</li>
+<li>[ ] 物语系列观后感</li>
+<li>[ ]
+个人评价体系：如何进行完善的评价，以及如何做一个尽可能完美的分类？</li>
+<li>[ ] 卷积</li>
+<li>[ ] 傅立叶变换、拉普拉斯变换</li>
+<li>[ ]
+概率论中的先验后验，概率空间，时间概率、空间概率，概率的概率</li>
+<li>[ ] 希尔伯特空间，闵可夫斯基，闵氏几何，闵可夫斯基时空</li>
+<li>[ ] 四元数</li>
+</ul>
+<h2 id="up主">UP主</h2>
+<h3 id="机器学习编程相关">机器学习，编程相关</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/480804525?spm_id_from=333.1007.tianma.2-2-5.click">_<em>阿岳</em>_</a>，主要方向是python的算法、技巧，还有一些机器学习的内容</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/1900783">同济子豪兄</a>，计算机视觉，神经网络，另外还有<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1t3411A7Z8/">交互式地图数据可视化设计</a></li>
+</ul>
+<h3 id="理论">理论</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/88461692">3Blue1Brown</a>，系统性地讲了线性代数、微积分、概率论等数学理论知识</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/230105574">DR_CAN</a>，主要内容是控制理论，有很多相关的基础课程，矩阵、卡尔曼滤波器、工程数学等，实用性非常强，适合入门</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/2057313067?spm_id_from=333.337.0.0">乐正垂星</a>，仿照<a target="_blank" rel="noopener" href="https://space.bilibili.com/88461692">3Blue1Brown</a>的模式，在数学上进行的拓展</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/266765166">漫士沉思录</a>，仿照<a target="_blank" rel="noopener" href="https://space.bilibili.com/88461692">3Blue1Brown</a>的模式，在数学上进行的拓展，对有理数的展示和扩展做得非常好</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/254463269">毕导</a>，数学物理化学都有，选题主要从<strong>生活中</strong>切入，很多都是看起来不起眼，研究起来没用的小事，但是往往都通往一些很重要的领域</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/552018206">Alice-Bob</a>，系统性地讲解了<strong>密码学</strong>的基础知识和其所需要的数学</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/504715181">王木头学科学</a>，主要聚焦于<strong>机器学习</strong>的底层逻辑和知识讲解分析，偏向于思考和联系，讲的数学和计算机通识都是非常底层的</li>
+</ul>
+<h3 id="计算机基础知识">计算机基础知识</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/327247876">技术蛋老师</a>，会讲很多琐碎的计算机网络知识，前端基础知识，JavaScript等，包括vue</li>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/302954484">峰华前端工程师</a>，前端入门</li>
+</ul>
+<h3 id="嵌入式">嵌入式</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/6100925">keysking</a>，STM32教程，非常详细</li>
+<li></li>
+</ul>
+<h3 id="人文社科">人文社科</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/17588331">青蛙刀圣1993</a>，主要讲了一些宗教的基础知识，中土世界系列的世界观</li>
+</ul>
+<h3 id="前后端">前后端</h3>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://space.bilibili.com/34786453">康文昌</a>，主要讲前后端的基础知识，但是注重实践，构建<strong>网站</strong>和写<strong>微信小程序</strong></li>
+<li></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://limuyuan.top">Kihara Ri</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://limuyuan.top/posts/ImDoing.html">https://limuyuan.top/posts/ImDoing.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://limuyuan.top" target="_blank">Kihara Ri</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/default_cover2.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2%E3%80%81%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%8F%98%E6%8D%A2%E3%80%81%E5%8D%B7%E7%A7%AF.html" title="傅立叶变换、拉普拉斯变换、卷积"><img class="cover" src="/img/default_cover4.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">傅立叶变换、拉普拉斯变换、卷积</div></div></a></div><div class="next-post pull-right"><a href="/posts/%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F.html" title="欧拉公式"><img class="cover" src="/img/default_cover5.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">欧拉公式</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/Avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Kihara Ri</div><div class="author-info__description">我还没想好😳</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">58</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">93</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Kihara-Ri" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#what-im-doing"><span class="toc-number">1.</span> <span class="toc-text">What I’m doing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#learning"><span class="toc-number">2.</span> <span class="toc-text">Learning</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#thoughts"><span class="toc-number">3.</span> <span class="toc-text">Thoughts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#up%E4%B8%BB"><span class="toc-number">4.</span> <span class="toc-text">UP主</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3"><span class="toc-number">4.1.</span> <span class="toc-text">机器学习，编程相关</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%90%86%E8%AE%BA"><span class="toc-number">4.2.</span> <span class="toc-text">理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-number">4.3.</span> <span class="toc-text">计算机基础知识</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F"><span class="toc-number">4.4.</span> <span class="toc-text">嵌入式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%BA%E6%96%87%E7%A4%BE%E7%A7%91"><span class="toc-number">4.5.</span> <span class="toc-text">人文社科</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF"><span class="toc-number">4.6.</span> <span class="toc-text">前后端</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/Rust%E5%85%A5%E9%97%A8.html" title="Rust入门"><img src="https://www.wikiwand.com/en/File:Rust_programming_language_black_logo.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rust入门"/></a><div class="content"><a class="title" href="/posts/Rust%E5%85%A5%E9%97%A8.html" title="Rust入门">Rust入门</a><time datetime="2024-03-22T15:56:25.000Z" title="发表于 2024-03-22 23:56:25">2024-03-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2%E3%80%81%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%8F%98%E6%8D%A2%E3%80%81%E5%8D%B7%E7%A7%AF.html" title="傅立叶变换、拉普拉斯变换、卷积"><img src="/img/default_cover4.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="傅立叶变换、拉普拉斯变换、卷积"/></a><div class="content"><a class="title" href="/posts/%E5%82%85%E7%AB%8B%E5%8F%B6%E5%8F%98%E6%8D%A2%E3%80%81%E6%8B%89%E6%99%AE%E6%8B%89%E6%96%AF%E5%8F%98%E6%8D%A2%E3%80%81%E5%8D%B7%E7%A7%AF.html" title="傅立叶变换、拉普拉斯变换、卷积">傅立叶变换、拉普拉斯变换、卷积</a><time datetime="2024-03-20T14:49:33.000Z" title="发表于 2024-03-20 22:49:33">2024-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ImDoing.html" title="我在做的"><img src="/img/default_cover2.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="我在做的"/></a><div class="content"><a class="title" href="/posts/ImDoing.html" title="我在做的">我在做的</a><time datetime="2024-03-20T14:45:40.000Z" title="发表于 2024-03-20 22:45:40">2024-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F.html" title="欧拉公式"><img src="/img/default_cover5.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="欧拉公式"/></a><div class="content"><a class="title" href="/posts/%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F.html" title="欧拉公式">欧拉公式</a><time datetime="2024-03-20T14:43:15.000Z" title="发表于 2024-03-20 22:43:15">2024-03-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E5%B7%B4%E5%A1%9E%E5%B0%94%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E6%9E%90%E5%BB%B6%E6%8B%93.html" title="巴塞尔问题与解析延拓"><img src="/img/default_cover1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="巴塞尔问题与解析延拓"/></a><div class="content"><a class="title" href="/posts/%E5%B7%B4%E5%A1%9E%E5%B0%94%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E6%9E%90%E5%BB%B6%E6%8B%93.html" title="巴塞尔问题与解析延拓">巴塞尔问题与解析延拓</a><time datetime="2024-03-20T14:41:12.000Z" title="发表于 2024-03-20 22:41:12">2024-03-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Kihara Ri</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">海内存知己，天涯若比邻</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
