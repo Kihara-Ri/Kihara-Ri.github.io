@@ -119,33 +119,41 @@ search:
 bangumi: # 追番设置
   enable: true
   source: bili
+  # bgmInfoSource: 'bgmApi'
   path:
-  vmid: 631081975
-  title: "番剧列表"
-  quote: "一般不看战斗番"
+  vmid: 631081975        # 740765 # b站或bangumi id
+  title: "我看的动画/番剧"
+  quote: "日本动画就是有这样一种魅力，它不说教式地告诉我们人生应当是怎样的，而是通过别人的人生引导我们<br>——你想活出怎样的人生？<br>🐭🐭虽然已经过了中二的年龄，热血的、少年的、王道的、打斗的都不感兴趣，但是对人的探索，却是每个人永恒的话题"
   show: 1
-  lazyload: false
-  loading:
-  showMyComment: false
-  pagination: false
-  metaColor:
-  color:
+  # lazyload: true
+  # loading: '__image__'
+  # lazyloadAttrName: 'data-src=__image__'
+  # showMyComment: true
+  # pagination: true
+  metaColor: '#9d65c2'  # 简介上方字体颜色
+  color:  # 简介字体颜色
   webp:
-  progress:
+  progress: true
+  order: latest # latest | score | -score
   extraOrder:
   proxy:
     host: "代理host"
     port: "代理端口"
   extra_options:
-    top_img: false
-    lazyload:
-      enable: false
+    key: 
 
 # APlayer
 # https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md
 aplayer:
-  meting: true
-  asset_inject: false
+  # script_dir: some/place                        # Public 目录下脚本目录路径，默认: 'assets/js'
+  # style_dir: some/place                         # Public 目录下样式目录路径，默认: 'assets/css'
+  # cdn: http://xxx/aplayer.min.js                # 引用 APlayer.js 外部 CDN 地址 (默认不开启)
+  # style_cdn: http://xxx/aplayer.min.css         # 引用 APlayer.css 外部 CDN 地址 (默认不开启)
+  meting: true                                  # MetingJS 支持
+  # meting_api: http://xxx/api.php                # 自定义 Meting API 地址
+  # meting_cdn: http://xxx/Meing.min.js           # 引用 Meting.js 外部 CDN 地址 (默认不开启)
+  asset_inject: true                            # 自动插入 Aplayer.js 与 Meting.js 资源脚本, 默认开启
+  # externalLink: http://xxx/aplayer.min.js       # 老版本参数，功能与参数 cdn 相同
 
 pandoc:
   args:
@@ -183,13 +191,13 @@ douban:
   customize_layout: page
   book:
     path: books/index.html
-    title: 'This is my book title'
-    quote: 'This is my book quote'
+    title: '读书清单'
+    quote: '因为本人是理工科尤其是编程狂热爱好者，因此读的书中技术相关的会比较多<br>其他书也会读，但是更偏向于历史、经济社科等真实内容'
     option:
   movie:
     path: movies/index.html
-    title: 'This is my movie title'
-    quote: 'This is my movie quote'
+    title: '看过的电影'
+    quote: '本人虽然没有什么艺术造诣和审美能力，但是根据我对社科浅显的认识，我更喜欢那些有讽刺意味和有深度思考空间的电影作品'
     option:
   # game:
   #   path: games/index.html
