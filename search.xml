@@ -1602,5 +1602,16 @@
     </entry>
     
     
+    
+    <entry>
+      <title></title>
+      <link href="/bangumis.json"/>
+      <url>/bangumis.json</url>
+      
+        <content type="html"><![CDATA[{"wantWatch":[],"watching":[],"watched":[]}]]></content>
+      
+    </entry>
+    
+    
   
 </search>
