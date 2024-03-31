@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>简单bs4爬虫</title>
+      <link href="/posts/%E7%AE%80%E5%8D%95bs4%E7%88%AC%E8%99%AB%E7%88%AC%E6%AD%8C%E8%AF%8D.html"/>
+      <url>/posts/%E7%AE%80%E5%8D%95bs4%E7%88%AC%E8%99%AB%E7%88%AC%E6%AD%8C%E8%AF%8D.html</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/assets/js/Meting.min.js"></script><h2 id="代码">代码</h2><p>怎么都感觉这篇post有点水💦</p><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"></span><br><span class="line">url = <span class="string">'https://www.uta-net.com/song/348205/'</span></span><br><span class="line"></span><br><span class="line">headers = {</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'</span></span><br><span class="line">}</span><br><span class="line"></span><br><span class="line">response = requests.get(url, headers=headers)</span><br><span class="line"></span><br><span class="line">soup = BeautifulSoup(response.text, <span class="string">'html.parser'</span>)</span><br><span class="line">kashi_area_div = soup.find(<span class="string">'div'</span>, <span class="built_in">id</span>=<span class="string">'kashi_area'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> kashi_area_div:</span><br><span class="line">    <span class="keyword">for</span> br <span class="keyword">in</span> kashi_area_div.find_all(<span class="string">'br'</span>):</span><br><span class="line">        br.replace_with(<span class="string">'\n'</span>)</span><br><span class="line">    <span class="built_in">print</span>(kashi_area_div.text)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">"找不到相应的内容"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span> (<span class="string">'haru.md'</span>, <span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> file:</span><br><span class="line">    file.write(kashi_area_div.text)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"---------------------------------\n\n写入完成"</span>)</span><br></pre></td></tr></table></figure><h2 id="简单分析">简单分析</h2><p>上面的这个<svg class="icon"><use xlink:href="#icon-python"></use></svg>爬虫代码虽然看起来好像挺简单的，但是实际做起来也不是那么顺利，比较考验基本功吧</p><p>一开始直接用<code>requests.get(url)</code>来获取网页内容，没有加<code>headers</code>果然立马出问题，加上以后就能爬到内容了</p><p>需要注意的一点是歌词是全嵌在这个标签里的</p><p><img src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/202403311616898.png" alt="div"></p><p>也不是一句一句的，每句之间就用<code>&lt;br&gt;</code>标签来做换行，这里如果全部取出来的话根据bs4的特性，换行标签直接就没了，因此如果你不进行进一步处理的话，得到的歌词就是一整行，一点断句都没有，这肯定不是我们想要的东西</p><p>因此我们再用一次<code>find_all()</code>函数，选择所有的<code>&lt;br&gt;</code>标签，都转换成换行符就OK了</p><h2 id="一点题外话">一点题外话</h2><p>为什么要爬这个歌词，是因为我发现这些歌词网站给出的歌词竟然都不支持复制！不像国内的网站会弹出弹窗限制什么的，小日子的网站竟然直接就禁用你鼠标右键🤣</p><p>不过好在这个网站的结构非常简单，也基本没有反爬措施，小日子网站大多看着都挺旧的，属于是旧时代的残党了，不过这些网站竟然还一直保持最新的更新这是我没想到的，有些网站竟然也没有直接把歌词数据加载到前端让人轻易爬取</p><p>最近看到很多人在玩<svg class="icon"><use xlink:href="#icon-wangluo"></use></svg><a href="https://app.suno.ai/">SunoAI</a>创作歌曲，然后看到他们也生成了挺不错的歌曲，我就试了一试</p><p>这首歌我挺喜欢的，想看看AI拿到这个歌词后会生成怎样的内容，结果我就把歌词粘贴到SunoAI上试了试，加上JPOP关键词，emmm…说实话不怎么样，但是JPOP味儿还是挺浓的，只不过跟真正的好歌比起来，变化和特色都差了很多</p><p>正如很多b站上的up主说的一样，工业化流水线的创作爆款歌的方式，现在看来更进一步了，我们在生活中可能听到这些流水线生产的歌的机会也许会更多了，大众的音乐审美也许会更加固化；但是，AI最擅长的事情就是平均，它学习了这么多的歌曲，保底有一个下限，这可比很多粗制滥造出来的歌曲强上了不少</p><p>所以说，这究竟是一件好事呢，还是坏事呢？谁知道呢</p><p>对了，现在的音乐人基本上不懂AI，正如前段时间的底层画师一样，他们对技术发展的恐惧的外在表现就是对新技术出现的傲慢，他们认为AI不可能理解绘画的，现在看来AI可能比他们更懂绘画；音乐人部分吸取了绘画的教训，在他们看来AI的各种能力还不足，这也不懂那也不懂，但是在我看来，AI背后的人是程序员，只要程序员懂，他们就有办法让AI懂，更何况未来的新一代的基于因果推断的AI也还在发展中，未来是什么样的，我们还真不知道</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> logs </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> spider </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>编辑器改造计划</title>
       <link href="/posts/%E7%BC%96%E8%BE%91%E5%99%A8%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92(%E6%9C%AA%E5%AE%8C%E6%88%90).html"/>
       <url>/posts/%E7%BC%96%E8%BE%91%E5%99%A8%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92(%E6%9C%AA%E5%AE%8C%E6%88%90).html</url>
