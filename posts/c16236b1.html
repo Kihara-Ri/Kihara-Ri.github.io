@@ -1,0 +1,653 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>树莓派连接问题 | kihara</title><meta name="author" content="Kihara Ri"><meta name="copyright" content="Kihara Ri"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="对于装有Ubuntu系统 以下是Bing AI给出的解答方案：  将下载好的镜像文件烧录进入树莓派后，没有图形界面，那么应该怎样让我的pc连接到ubuntu呢？  您可以通过SSH连接到树莓派。首先，您需要在树莓派上启用SSH功能。然后，您需要查询树莓派的IP地址。在Ubuntu终端中输入 ssh pi@树莓派ip地址 即可连接到树莓派。12 您也可以通过VNC连接到树莓派。首先，您需要在树莓派上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派连接问题">
+<meta property="og:url" content="https://limuyuan.top/posts/c16236b1.html">
+<meta property="og:site_name" content="kihara">
+<meta property="og:description" content="对于装有Ubuntu系统 以下是Bing AI给出的解答方案：  将下载好的镜像文件烧录进入树莓派后，没有图形界面，那么应该怎样让我的pc连接到ubuntu呢？  您可以通过SSH连接到树莓派。首先，您需要在树莓派上启用SSH功能。然后，您需要查询树莓派的IP地址。在Ubuntu终端中输入 ssh pi@树莓派ip地址 即可连接到树莓派。12 您也可以通过VNC连接到树莓派。首先，您需要在树莓派上">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://limuyuan.top/img/default_cover4.png">
+<meta property="article:published_time" content="2023-12-12T08:55:35.000Z">
+<meta property="article:modified_time" content="2023-12-26T05:28:15.604Z">
+<meta property="article:author" content="Kihara Ri">
+<meta property="article:tag" content="ssh">
+<meta property="article:tag" content="树莓派">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://limuyuan.top/img/default_cover4.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://limuyuan.top/posts/c16236b1.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Kihara Ri","link":"链接: ","source":"来源: kihara","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#87428a","bgDark":"#1f1f1f","position":"bottom-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '树莓派连接问题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-26 13:28:15'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 21
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4386068_in4cqueq0kl.css"><script src="/js/icon-import.js"></script><link rel="stylesheet" href="/css/icon-import.css"><script src="/js/githubcalendar.js"></script><link rel="stylesheet" href="/css/hometop.css"><script src="/js/hometop.js"></script><link rel="stylesheet" href="/css/side-bars.css"><link rel="stylesheet" href="/css/theme-color-val.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/Avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">102</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont hexo-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont hexo-bilibili"></i><span> 动画</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont hexo-books"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont hexo-film"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/info/"><i class="fa-fw iconfont hexo-circle-info"></i><span> Info</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont hexo-personal"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/default_cover4.png')"><nav id="nav"><span id="blog-info"><a href="/" title="kihara"><img class="site-icon" src="/img/Avator.png"/><span class="site-name">kihara</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont hexo-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont hexo-bilibili"></i><span> 动画</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont hexo-books"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont hexo-film"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/info/"><i class="fa-fw iconfont hexo-circle-info"></i><span> Info</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont hexo-personal"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">树莓派连接问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-12T08:55:35.000Z" title="发表于 2023-12-12 16:55:35">2023-12-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-26T05:28:15.604Z" title="更新于 2023-12-26 13:28:15">2023-12-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/logs/">logs</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="对于装有ubuntu系统">对于装有Ubuntu系统</h2>
+<p>以下是Bing AI给出的解答方案：</p>
+<ul>
+<li><strong>将下载好的镜像文件烧录进入树莓派后，没有图形界面，那么应该怎样让我的pc连接到ubuntu呢？</strong></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/WY200101/article/details/120688319">您可以通过SSH连接到树莓派。首先，您需要在树莓派上启用SSH功能。然后，您需要查询树莓派的IP地址。在Ubuntu终端中输入
+<code>ssh pi@树莓派ip地址</code> 即可连接到树莓派。</a><a target="_blank" rel="noopener" href="https://blog.csdn.net/WY200101/article/details/120688319">1</a><a target="_blank" rel="noopener" href="https://blog.csdn.net/CGJustDoIT/article/details/92983555">2</a></p>
+<p>您也可以通过VNC连接到树莓派。首先，您需要在树莓派上启用VNC功能。然后，您需要查询树莓派的IP地址。在Ubuntu上安装VNC客户端，然后输入树莓派的IP地址即可连接到树莓派。</p>
+<ul>
+<li><strong>我没有任何对树莓派的输入手段，我应该怎么启用ssh呢？</strong></li>
+</ul>
+<p>如果您没有任何对树莓派的输入手段，您可以在烧录Ubuntu镜像到SD卡之前，在SD卡的根目录下创建一个名为
+<code>ssh</code>
+的空文件。这样，在树莓派启动时，它会自动启用SSH功能。</p>
+<ul>
+<li><strong>同样地，没有任何对树莓派的输入手段，我应该怎样让它启动时自动连接到wifi呢？</strong></li>
+</ul>
+<p>如果您没有任何对树莓派的输入手段，您可以在烧录Ubuntu镜像到SD卡之前，在SD卡的根目录下创建一个名为
+<code>wpa_supplicant.conf</code>
+的文件。在该文件中，您可以输入以下内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">country=CN</span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line"></span><br><span class="line">network={</span><br><span class="line">    ssid="您的WiFi名称"</span><br><span class="line">    psk="您的WiFi密码"</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>上面要注意，当wifi名称有空格的时候才需要加双引号，否则则不用，而树莓派系统则没有这样的问题</p>
+</blockquote>
+<p>请将 <code>CN</code> 替换为您所在国家的两位ISO代码，将
+<code>您的WiFi名称</code> 和 <code>您的WiFi密码</code>
+替换为您的实际WiFi名称和密码。</p>
+<p>这样，在树莓派启动时，它会自动连接到指定的WiFi网络。</p>
+<ul>
+<li><strong>在你的代码中，为什么需要有country=CN呢？这是用来干什么的？</strong></li>
+</ul>
+<p><code>country=CN</code>
+这一行用于指定您所在的国家。这是因为不同国家/地区对无线电频率的使用有不同的法规要求。指定国家代码可以确保树莓派在连接无线网络时遵守当地的法规要求。</p>
+<p>请将 <code>CN</code> 替换为您所在国家的两位ISO代码。</p>
+<h2 id="对于树莓派系统">对于树莓派系统</h2>
+<h3 id="这里给出的是无线连接的方案">这里给出的是无线连接的方案</h3>
+<p>直接在pc上打开，在根目录下建立如下文件<code>wpa_supplicant.conf</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">country=CN</span><br><span class="line">ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev</span><br><span class="line">update_config=1</span><br><span class="line"></span><br><span class="line">network={</span><br><span class="line">ssid=""  //wifi ID</span><br><span class="line">psk=""   //password</span><br><span class="line">key_mgmt=WPA-PSK</span><br><span class="line">priority=1</span><br><span class="line">}</span><br></pre></td></tr></table></figure>
+
+<p>然后建立一个名称叫<code>ssh</code>的文本文档，没有后缀，其他什么都不用动</p>
+<blockquote>
+<p>但是树莓派为了安全性对默认用户作了修改，第一次开机时需要配置用户，不能再向原来一样用默认用户名密码登录，会被denied</p>
+</blockquote>
+<p><strong>解决方法</strong></p>
+<p>这里可以在根目录中创建<code>userconf.txt</code>文件，在文件中填入以下代码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pi:$6$grJXXypN.HLLiQW8$BrjomjqTD9creP1cytdzWZxUfxQFUiGwduhsUlkQBrRvC3dfmK5ed05G3ev8RKwipvEBc3DHmP6gDl6E03ErF.</span><br></pre></td></tr></table></figure>
+
+<p>上面一串代码中，<code>pi</code>即为用户名，<code>:</code>后的内容就是加密后的密码，为<code>raspberry</code></p>
+<h3 id="有线方案">有线方案</h3>
+<p>在校园网环境下我的实际解决方案还是有线方案，这里说一下我痛苦的无线方案尝试：</p>
+<p>配置文件刷进去很多次，发现根本行不通，不仅是默认用户没有设置，还有一开始的配置无法识别5G
+wifi信号，在这期间我将电脑插上两个网卡，发现另一个竟然没有发送信号的功能，而且还把原来网卡驱动弄损坏了，折腾了好久才恢复</p>
+<p>最终还是考虑通过网线连接，在命令行中输入<code>arp -a</code>获得接口的ip，观察本地接口，在<code>PuTTY</code>中成功使用SSH登录树莓派</p>
+<p>之后的操作较为简单</p>
+<ul>
+<li><p>树莓派配置界面<code>sudo raspi-config</code></p></li>
+<li><p>切换国家地区时区，这里不正确会导致无法进行无线连接，上面有提到</p></li>
+<li><p>别的设置多看看</p></li>
+<li><p>下载中文字体及输入法<code>sudo apt-get install fonts-wqy-zenhei</code></p>
+<p><code>sudo apt-get install fcitx fcitx-googlepinyin fcitx-module-cloudpinyin fcitx-sunpinyin</code></p></li>
+</ul>
+<p>后面的话就可以正常使用了</p>
+<h2 id="35inch屏幕参数介绍">3.5inch屏幕参数介绍</h2>
+<h3 id="大致情况">大致情况</h3>
+<ul>
+<li>320×480 分辨率</li>
+<li>电阻式触摸控制</li>
+<li>大小与树莓派相同，完美兼容并可直接插入任何版本树莓派(Raspberry Pi A,
+A+, B, B+, 2B, 3B, 3B+,4B)</li>
+<li>提供Raspbian/Ubuntu/Kali系统下的驱动</li>
+<li>本产品通过CE、RoHS认证</li>
+</ul>
+<p><strong>主要参数</strong></p>
+<table>
+<thead>
+<tr class="header">
+<th>SKU</th>
+<th>MPI3501</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>类型</td>
+<td>TFT</td>
+</tr>
+<tr class="even">
+<td>接口</td>
+<td>SPI(Fmax:32MHz)</td>
+</tr>
+<tr class="odd">
+<td>液晶屏驱动IC</td>
+<td>ILI9486</td>
+</tr>
+<tr class="even">
+<td>触摸面板类型</td>
+<td>电阻型</td>
+</tr>
+<tr class="odd">
+<td>触摸面板控制芯片</td>
+<td>XPT2046</td>
+</tr>
+<tr class="even">
+<td>色阶指数</td>
+<td>65536</td>
+</tr>
+<tr class="odd">
+<td>背光</td>
+<td>LED</td>
+</tr>
+<tr class="even">
+<td>分辨率</td>
+<td>320*480 (Pixel)</td>
+</tr>
+<tr class="odd">
+<td>功耗</td>
+<td>0.13A*5V</td>
+</tr>
+<tr class="even">
+<td>工作温度（℃）</td>
+<td>-20~60</td>
+</tr>
+<tr class="odd">
+<td>显示区域</td>
+<td>48.96x73.44(mm)</td>
+</tr>
+<tr class="even">
+<td>外形尺寸</td>
+<td>85.42*55.60(mm)</td>
+</tr>
+<tr class="odd">
+<td>包装尺寸</td>
+<td>118<em>72</em>34 (mm)</td>
+</tr>
+<tr class="even">
+<td>重量（含包装）</td>
+<td>75 (g)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>硬件说明</strong></p>
+<p><img src="http://www.lcdwiki.com/zh/images/thumb/7/74/MPI3501-port-4-20181011.jpg/300px-MPI3501-port-4-20181011.jpg" alt="MPI3501-port-4-20181011.jpg"></p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">引脚号</th>
+<th style="text-align: center;">标识</th>
+<th style="text-align: center;">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1, 17</td>
+<td style="text-align: center;">3.3V</td>
+<td style="text-align: center;">电源正(3.3V电源输入)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2, 4</td>
+<td style="text-align: center;">5V</td>
+<td style="text-align: center;">电源正(5V电源输入)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3, 5, 7, 8, 10, 12, 13, 15, 16</td>
+<td style="text-align: center;">NC</td>
+<td style="text-align: center;">NC</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6, 9, 14, 20, 25</td>
+<td style="text-align: center;">GND</td>
+<td style="text-align: center;">电源地</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">TP_IRQ</td>
+<td style="text-align: center;">触摸面板中断，检测到触摸面板有按下则为低电平</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">LCD_RS</td>
+<td style="text-align: center;">指令/数据
+寄存器选择，低电平为指令，高电平为数据</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">19</td>
+<td style="text-align: center;">LCD_SI / TP_SI</td>
+<td style="text-align: center;">LCD显示/ 触摸面板的SPI数据输入</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">TP_SO</td>
+<td style="text-align: center;">触摸面板的SPI数据输出</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">22</td>
+<td style="text-align: center;">RST</td>
+<td style="text-align: center;">复位</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">LCD_SCK / TP_SCK</td>
+<td style="text-align: center;">LCD显示/ 触摸面板的SPI时钟信号</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">24</td>
+<td style="text-align: center;">LCD_CS</td>
+<td style="text-align: center;">LCD片选信号，低电平选择LCD</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">TP_CS</td>
+<td style="text-align: center;">触摸面板片选信号，低电平选择触摸面板</td>
+</tr>
+</tbody>
+</table>
+<p><img src="http://www.lcdwiki.com/zh/images/thumb/9/94/3.5-MHS-size.jpg/400px-3.5-MHS-size.jpg" alt="3.5-MHS-size.jpg"></p>
+<h3 id="在树莓派系统中使用">在树莓派系统中使用</h3>
+<p><strong>在线安装</strong></p>
+<p>使用ssh连接在命令行中输入下面命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo rm -rf LCD-show</span><br><span class="line">git clone https://github.com/goodtft/LCD-show.git</span><br><span class="line">chmod -R 755 LCD-show</span><br><span class="line">cd LCD-show/</span><br><span class="line">sudo ./LCD35-show</span><br></pre></td></tr></table></figure>
+
+<p><strong>离线安装</strong></p>
+<ul>
+<li>拷贝驱动文件到根目录下</li>
+<li>执行下面的命令安装驱动</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /boot</span><br><span class="line">sudo tar zxvf LCD-show.tar.gz</span><br><span class="line">cd LCD-show/</span><br><span class="line">sudo ./LCD35-show</span><br></pre></td></tr></table></figure>
+
+<p>更详细的信息和资源访问以下网站：</p>
+<p>http://www.lcdwiki.com/zh/3.5inch_RPi_Display</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://limuyuan.top">Kihara Ri</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://limuyuan.top/posts/c16236b1.html">https://limuyuan.top/posts/c16236b1.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://limuyuan.top" target="_blank">kihara</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/ssh/">ssh</a><a class="post-meta__tags" href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/">树莓派</a></div><div class="post_share"><div class="social-share" data-image="/img/default_cover4.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/5e168f7e.html" title="快速搭建环境"><img class="cover" src="/img/default_cover4.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">快速搭建环境</div></div></a></div><div class="next-post pull-right"><a href="/posts/2865e7f9.html" title="树莓派搭建NAS"><img class="cover" src="/img/default_cover2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">树莓派搭建NAS</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/Ubuntu%E4%BD%BF%E7%94%A8ssh%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1%E5%99%A8.md.html" title="Ubuntu使用ssh密钥登录服务器.md"><img class="cover" src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/rasp_ssh_github.png" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-03-21</div><div class="title">Ubuntu使用ssh密钥登录服务器.md</div></div></a></div><div><a href="/posts/2865e7f9.html" title="树莓派搭建NAS"><img class="cover" src="/img/default_cover2.png" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-12-26</div><div class="title">树莓派搭建NAS</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/Avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Kihara Ri</div><div class="author-info__description">春宵苦短，做且必做你认为你该做的事</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">102</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Kihara-Ri" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:limuyuan3650@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">应当做一个可嵌入式的消息盒子</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E8%A3%85%E6%9C%89ubuntu%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.</span> <span class="toc-text">对于装有Ubuntu系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B9%E4%BA%8E%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.</span> <span class="toc-text">对于树莓派系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%99%E9%87%8C%E7%BB%99%E5%87%BA%E7%9A%84%E6%98%AF%E6%97%A0%E7%BA%BF%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%96%B9%E6%A1%88"><span class="toc-number">2.1.</span> <span class="toc-text">这里给出的是无线连接的方案</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E7%BA%BF%E6%96%B9%E6%A1%88"><span class="toc-number">2.2.</span> <span class="toc-text">有线方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#35inch%E5%B1%8F%E5%B9%95%E5%8F%82%E6%95%B0%E4%BB%8B%E7%BB%8D"><span class="toc-number">3.</span> <span class="toc-text">3.5inch屏幕参数介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E8%87%B4%E6%83%85%E5%86%B5"><span class="toc-number">3.1.</span> <span class="toc-text">大致情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%A0%91%E8%8E%93%E6%B4%BE%E7%B3%BB%E7%BB%9F%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-number">3.2.</span> <span class="toc-text">在树莓派系统中使用</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/Rust%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6(%E4%BA%8C).html" title="Rust核心机制(二)"><img src="https://www.rust-lang.org/static/images/rust-logo-blk.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rust核心机制(二)"/></a><div class="content"><a class="title" href="/posts/Rust%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6(%E4%BA%8C).html" title="Rust核心机制(二)">Rust核心机制(二)</a><time datetime="2024-04-03T02:50:56.000Z" title="发表于 2024-04-03 10:50:56">2024-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%AE%80%E5%8D%95bs4%E7%88%AC%E8%99%AB%E7%88%AC%E6%AD%8C%E8%AF%8D.html" title="简单bs4爬虫"><img src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/202403311623031.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简单bs4爬虫"/></a><div class="content"><a class="title" href="/posts/%E7%AE%80%E5%8D%95bs4%E7%88%AC%E8%99%AB%E7%88%AC%E6%AD%8C%E8%AF%8D.html" title="简单bs4爬虫">简单bs4爬虫</a><time datetime="2024-03-31T07:59:05.000Z" title="发表于 2024-03-31 15:59:05">2024-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%BC%96%E8%BE%91%E5%99%A8%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92(%E6%9C%AA%E5%AE%8C%E6%88%90).html" title="编辑器改造计划"><img src="/img/default_cover1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编辑器改造计划"/></a><div class="content"><a class="title" href="/posts/%E7%BC%96%E8%BE%91%E5%99%A8%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92(%E6%9C%AA%E5%AE%8C%E6%88%90).html" title="编辑器改造计划">编辑器改造计划</a><time datetime="2024-03-30T08:24:59.000Z" title="发表于 2024-03-30 16:24:59">2024-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E5%9C%A8Markdown%E4%B8%AD%E6%8F%92%E5%85%A5icons.html" title="在Markdown中插入icons"><img src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/202403292349691.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Markdown中插入icons"/></a><div class="content"><a class="title" href="/posts/%E5%9C%A8Markdown%E4%B8%AD%E6%8F%92%E5%85%A5icons.html" title="在Markdown中插入icons">在Markdown中插入icons</a><time datetime="2024-03-29T07:32:29.000Z" title="发表于 2024-03-29 15:32:29">2024-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/C%E8%AF%AD%E8%A8%80%EF%BC%9A%E6%9B%B4%E5%BA%95%E5%B1%82.html" title="C语言：更底层"><img src="/img/default_cover3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言：更底层"/></a><div class="content"><a class="title" href="/posts/C%E8%AF%AD%E8%A8%80%EF%BC%9A%E6%9B%B4%E5%BA%95%E5%B1%82.html" title="C语言：更底层">C语言：更底层</a><time datetime="2024-03-28T06:25:08.000Z" title="发表于 2024-03-28 14:25:08">2024-03-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Kihara Ri</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">海内存知己，天涯若比邻</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 760px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 640px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/技术/&quot;);" href="javascript:void(0);">技术</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr">Ubuntu指南</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/logs/&quot;);" href="javascript:void(0);">logs</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr">玩转Win10</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover3.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学/&quot;);" href="javascript:void(0);">数学</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr">长篇小说连载</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover4.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/物理/&quot;);" href="javascript:void(0);">物理</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">个人日记</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover5.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/mathematics/&quot;);" href="javascript:void(0);">mathematics</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr">诗词歌赋</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Linux/&quot;);" href="javascript:void(0);">Linux</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">杂谈教程</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/万物/&quot;);" href="javascript:void(0);">万物</a><span class="categoryBar-list-count">6</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/语言/&quot;);" href="javascript:void(0);">语言</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/项目/&quot;);" href="javascript:void(0);">项目</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/categories/'|| '/categories/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --></body></html>

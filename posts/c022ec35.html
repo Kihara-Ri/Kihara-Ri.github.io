@@ -1,0 +1,548 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>在服务器上跑Jupyter | kihara</title><meta name="author" content="Kihara Ri"><meta name="copyright" content="Kihara Ri"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="在阿里云服务器上部署Jupyter服务，通过公网IP访问8000端口实现云端python编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在服务器上跑Jupyter">
+<meta property="og:url" content="https://limuyuan.top/posts/c022ec35.html">
+<meta property="og:site_name" content="kihara">
+<meta property="og:description" content="在阿里云服务器上部署Jupyter服务，通过公网IP访问8000端口实现云端python编程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://limuyuan.top/images/Jupyter_logo.png">
+<meta property="article:published_time" content="2023-12-17T13:22:33.000Z">
+<meta property="article:modified_time" content="2023-12-26T05:07:38.397Z">
+<meta property="article:author" content="Kihara Ri">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Jupyter">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://limuyuan.top/images/Jupyter_logo.png"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://limuyuan.top/posts/c022ec35.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":true,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":100,"languages":{"author":"作者: Kihara Ri","link":"链接: ","source":"来源: kihara","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#87428a","bgDark":"#1f1f1f","position":"bottom-right"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '在服务器上跑Jupyter',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-12-26 13:07:38'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 8 || hour >= 21
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="//at.alicdn.com/t/c/font_4386068_in4cqueq0kl.css"><script src="/js/icon-import.js"></script><link rel="stylesheet" href="/css/icon-import.css"><script src="/js/githubcalendar.js"></script><link rel="stylesheet" href="/css/hometop.css"><script src="/js/hometop.js"></script><link rel="stylesheet" href="/css/side-bars.css"><link rel="stylesheet" href="/css/theme-color-val.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-categories-card@1.0.0/lib/categorybar.css"><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load',() => { preloader.endLoading() })
+
+  if (true) {
+    document.addEventListener('pjax:send', () => { preloader.initLoading() })
+    document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+  }
+})()</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/Avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">102</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont hexo-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont hexo-bilibili"></i><span> 动画</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont hexo-books"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont hexo-film"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/info/"><i class="fa-fw iconfont hexo-circle-info"></i><span> Info</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont hexo-personal"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/images/Jupyter_logo.png')"><nav id="nav"><span id="blog-info"><a href="/" title="kihara"><img class="site-icon" src="/img/Avator.png"/><span class="site-name">kihara</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw iconfont hexo-fenlei"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 兴趣</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/bangumis/"><i class="fa-fw iconfont hexo-bilibili"></i><span> 动画</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw iconfont hexo-books"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw iconfont hexo-film"></i><span> 影视</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/info/"><i class="fa-fw iconfont hexo-circle-info"></i><span> Info</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont hexo-personal"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">在服务器上跑Jupyter</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-12-17T13:22:33.000Z" title="发表于 2023-12-17 21:22:33">2023-12-17</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-12-26T05:07:38.397Z" title="更新于 2023-12-26 13:07:38">2023-12-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/logs/">logs</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>想用Jupyter
+notebook写一些实验性的python代码，但是每次都写在本地，还要额外开一个服务，而且还只能给自己看，也没法放到blog中，总感觉有些鸡肋，因此借此机会，尝试在云服务器中运行Jupyter
+notebook，这样就很方便可以运行python代码了</p>
+<h2 id="配置文件"><strong>配置文件</strong></h2>
+<p><code>jupyter_notebook_config.py</code></p>
+<p>对于Linux来说，它的位置在<code>/home/USERNAME/.jupyter/jupyter_notebook_config.py</code></p>
+<p>可以通过下面的命令生成：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jupyter notebook --generate-config</span><br></pre></td></tr></table></figure>
+
+<p>如果是<code>root</code>用户，加上<code>--allow-config</code></p>
+<p>执行成功后，返回：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Writing default config to: /root/.jupyter/jupyter_notebook_config.py</span><br></pre></td></tr></table></figure>
+
+<h2 id="生成密码"><strong>生成密码</strong></h2>
+<blockquote>
+<p>使用<code>ipython</code>手动设置的方法已经失效了，这里直接使用jupyter的方法，最后生成的<code>hashed_password</code>会保存<code>json</code>文件中，用vim命令去复制提取就可以了</p>
+</blockquote>
+<p>当第一次通过 token
+登录的时候，notebook服务器会让用户有机会在用户界面设置一个密码，浙江通过一个表单来询问当前的令牌以及新的密码，输入并点击<code>Login and setup new password</code></p>
+<p>下次登录的时候就可以直接选择输入密码而不需要 token</p>
+<p>可以在配置文件中设置<code>--NotebookApp.allow_password_change=False</code>来禁止第一次登录的时候修改密码</p>
+<p>通过<code>jupyter notebook password</code>来设置密码并保存到文件<code>jupyter_noterbook_config.json</code>中</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">jupyter notebook password</span></span><br><span class="line">root@Kihara:/home# jupyter notebook password</span><br><span class="line">Enter password:</span><br><span class="line">Verify password:</span><br><span class="line">[JupyterPasswordApp] Wrote hashed password to /root/.jupyter/jupyter_server_config.json</span><br></pre></td></tr></table></figure>
+
+<h2 id="采用ssl加密通信"><strong>采用SSL加密通信</strong></h2>
+<p>采用密码的时候，配合带有网站证书的SSL可以避免哈希的密码被非加密的形式发送给浏览器</p>
+<p>可以通过设置参数<code>certfile</code>来开启notebook服务器，进行一次安全协议模式的通信，其中<code>mycert.pem</code>是自签
+(self-signed)证书</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jupyter notebook --certfile=mycert.pem --keyfile mykey.key</span><br></pre></td></tr></table></figure>
+
+<p>自签证书可以通过<code>openssl</code>生成，生成一个有效期为365天，将<code>key</code>和证书数据都保存在同一个文件中</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout mykey.key -out mycert.pem</span><br></pre></td></tr></table></figure>
+
+<p>这行命令是用于生成一个自签名的 SSL 证书和私钥，通常用于设置 HTTPS
+服务器。命令的各部分含义如下：</p>
+<ul>
+<li><p><code>openssl</code>: 这是一个功能强大的工具，用于处理各种与 SSL
+和 TLS 协议相关的任务。</p></li>
+<li><p><code>req</code>: 这是一个用于证书签名请求（Certificate Signing
+Request, CSR）的管理命令。在这里，它被用来创建一个新的 SSL
+证书请求。</p></li>
+<li><p><code>-x509</code>: 这个选项指示 openssl
+生成一个自签名的证书，而不是一个证书签名请求。x509 是用于 SSL
+证书的标准格式。</p></li>
+<li><p><code>-nodes</code>: 这个选项表示“no
+DES”，意味着在生成私钥时不对其进行密码保护。这意味着私钥文件不会被加密。</p></li>
+<li><p><code>-days 365</code>:
+这指定证书的有效期。在这个例子中，证书将在 365 天后过期。</p></li>
+<li><p><code>-newkey rsa:2048</code>: 这个选项指示 openssl 创建一个新的
+2048 位 RSA 私钥。RSA 是一种广泛使用的公钥加密算法。</p></li>
+<li><p><code>-keyout mykey.key</code>:
+这个选项指定私钥的输出文件名。在这个例子中，私钥将被保存到名为
+<code>mykey.key</code> 的文件中。</p></li>
+<li><p><code>-out mycert.pem</code>:
+这个选项指定证书的输出文件名。在这个例子中，生成的自签名证书将被保存到名为
+<code>mycert.pem</code> 的文件中。</p></li>
+</ul>
+<p>总体来说，这个命令用于生成一个自签名 SSL
+证书和相应的私钥。这在设置需要 SSL 加密的服务（如 HTTPS
+服务器）时非常有用，尤其是在测试环境或内部网络中。自签名证书意味着它不是由受信任的证书颁发机构签发的，因此在用于公共网站时可能会导致浏览器警告</p>
+<h2 id="运行服务器"><strong>运行服务器</strong></h2>
+<p>修改配置文件<code>jupyter_notebook_config.py</code></p>
+<p>官方建议：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 证书的信息</span></span><br><span class="line">c.NotebookApp.certfile = <span class="string">u'/absolute/path/to/your/certificate/mycert.pem'</span></span><br><span class="line">c.NotebookApp.keyfile = <span class="string">u'/absolute/path/to/your/certificate/mykey.key'</span></span><br><span class="line"><span class="comment"># ip 设置为 *</span></span><br><span class="line">c.NotebookApp.ip = <span class="string">'*'</span></span><br><span class="line">c.NotebookApp.password = <span class="string">u'sha1:bcd259ccf...&lt;your hashed password here&gt;'</span></span><br><span class="line">c.NotebookApp.open_browser = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置一个固定的接口</span></span><br><span class="line">c.NotebookApp.port = <span class="number">8000</span></span><br></pre></td></tr></table></figure>
+
+<p>这里官方教程是建议<code>c.NotebookApp.ip</code>设置为<code>*</code>，但实际上这样操作可能会连接失败，可以选择设置为<code>0.0.0.1</code>或者设置为服务器的IP</p>
+<p>最终配置如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">c.NotebookApp.ip = <span class="string">'*'</span> <span class="comment"># 允许任何 IP 访问</span></span><br><span class="line">c.NotebookApp.password = <span class="string">u'hashed password'</span></span><br><span class="line">c.NotebookApp.open_browser = <span class="literal">False</span></span><br><span class="line">c.NotebookApp.port =<span class="number">8000</span> <span class="comment">#可自行指定一个端口, 访问时使用该端口</span></span><br><span class="line">c.NotebookApp.notebook_dir = <span class="string">'/root/notebooks'</span>  <span class="comment"># 工作目录</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>运行</strong></p>
+<p>启动notebook服务器</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">jupyter notebook --allow-root</span><br></pre></td></tr></table></figure>
+
+<p>在本地浏览器输入<code>服务器IP:80</code>，再输入刚刚设置的密码，即可访问Jupyter
+notebook</p>
+<hr>
+<p>注意上面的命令只能在命令行开启时持续运行，当命令行关闭时，服务会自动挂掉，需要在服务器后台运行服务，需要<code>nohup</code>和<code>&amp;</code>命令：</p>
+<p><code>nohup</code>:</p>
+<ul>
+<li><code>nohup</code> 是 “no hang
+up”的缩写，用于在用户注销或关闭终端后继续运行相应的进程</li>
+<li>当使用 <code>nohup</code>
+运行命令时，任何由该命令产生的输出默认会被重定向到名为
+<code>nohup.out</code> 的文件中，除非另有指定</li>
+<li>这样可以防止进程接收到 “挂断”
+信号（SIGHUP），从而在用户退出或断开连接时不会被终止</li>
+</ul>
+<p><strong><code>&amp;</code></strong>:</p>
+<ul>
+<li>在命令的末尾放置一个 <code>&amp;</code>
+符号可以将命令置于后台执行</li>
+<li>这意味着命令会立即返回，而不是占用当前的终端或命令行会话</li>
+<li>您可以继续在同一个终端中执行其他命令，而
+<code>jupyter notebook</code> 服务会在后台运行</li>
+</ul>
+<h2 id="演示"><strong>演示</strong></h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">nohup</span> jupyter-notebook --allow-root &amp;</span></span><br><span class="line">[1] 28476</span><br><span class="line">root@Kihara:~# nohup: ignoring input and appending output to 'nohup.out'</span><br></pre></td></tr></table></figure>
+
+<p><strong>输出解释</strong>:</p>
+<ul>
+<li><code>[1] 28476</code>: 这是后台运行的进程的信息。<code>[1]</code>
+是作业号，<code>28476</code>
+是进程号（PID）。这些信息对于跟踪和管理后台进程很有用</li>
+<li><code>nohup: ignoring input and appending output to 'nohup.out'</code>:
+这是 <code>nohup</code> 命令的标准输出。它表示 <code>nohup</code>
+正在忽略输入，并且将所有输出追加到文件 <code>nohup.out</code>
+中。这意味着任何通常会显示在终端上的输出现在会被写入到
+<code>nohup.out</code> 文件中</li>
+</ul>
+<blockquote>
+<p>如果访问失败了，则有可能是服务器防火墙设置的问题，最简单的方法是在本地建立一个<code>ssh</code>通道：</p>
+<p>在本地终端中输入</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">ssh username@address_of_remote -L 127.0.0.1:1234:127.0.0.1:8000</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以在<code>localhost:1234</code>端口直接访问远程的Jupyter
+notebook了</p>
+</blockquote>
+<h2 id="references">References</h2>
+<ol type="1">
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/69869583">如何访问服务器的
+Jupyter notebook</a></p></li>
+<li><p><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/1247401">搭建
+Jupyter Notebook 服务</a></p></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://limuyuan.top">Kihara Ri</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://limuyuan.top/posts/c022ec35.html">https://limuyuan.top/posts/c022ec35.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://limuyuan.top" target="_blank">kihara</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a><a class="post-meta__tags" href="/tags/Jupyter/">Jupyter</a></div><div class="post_share"><div class="social-share" data-image="/images/Jupyter_logo.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/94b524b3.html" title="Python下划线"><img class="cover" src="/img/default_cover5.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Python下划线</div></div></a></div><div class="next-post pull-right"><a href="/posts/48a142a2.html" title="cURL命令"><img class="cover" src="/img/default_cover3.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">cURL命令</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/Linux%E5%85%A5%E9%97%A8.html" title="Linux入门"><img class="cover" src="/img/default_cover4.png" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2024-03-10</div><div class="title">Linux入门</div></div></a></div><div><a href="/posts/5e168f7e.html" title="快速搭建环境"><img class="cover" src="/img/default_cover4.png" alt="cover"><div class="content is-center"><div class="date"><i class="fas fa-history fa-fw"></i> 2023-12-26</div><div class="title">快速搭建环境</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/Avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Kihara Ri</div><div class="author-info__description">春宵苦短，做且必做你认为你该做的事</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">62</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">102</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Kihara-Ri" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:limuyuan3650@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">应当做一个可嵌入式的消息盒子</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">生成密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%87%E7%94%A8ssl%E5%8A%A0%E5%AF%86%E9%80%9A%E4%BF%A1"><span class="toc-number">3.</span> <span class="toc-text">采用SSL加密通信</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">运行服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%94%E7%A4%BA"><span class="toc-number">5.</span> <span class="toc-text">演示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#references"><span class="toc-number">6.</span> <span class="toc-text">References</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/Rust%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6(%E4%BA%8C).html" title="Rust核心机制(二)"><img src="https://www.rust-lang.org/static/images/rust-logo-blk.svg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Rust核心机制(二)"/></a><div class="content"><a class="title" href="/posts/Rust%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6(%E4%BA%8C).html" title="Rust核心机制(二)">Rust核心机制(二)</a><time datetime="2024-04-03T02:50:56.000Z" title="发表于 2024-04-03 10:50:56">2024-04-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%AE%80%E5%8D%95bs4%E7%88%AC%E8%99%AB%E7%88%AC%E6%AD%8C%E8%AF%8D.html" title="简单bs4爬虫"><img src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/202403311623031.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="简单bs4爬虫"/></a><div class="content"><a class="title" href="/posts/%E7%AE%80%E5%8D%95bs4%E7%88%AC%E8%99%AB%E7%88%AC%E6%AD%8C%E8%AF%8D.html" title="简单bs4爬虫">简单bs4爬虫</a><time datetime="2024-03-31T07:59:05.000Z" title="发表于 2024-03-31 15:59:05">2024-03-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E7%BC%96%E8%BE%91%E5%99%A8%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92(%E6%9C%AA%E5%AE%8C%E6%88%90).html" title="编辑器改造计划"><img src="/img/default_cover1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编辑器改造计划"/></a><div class="content"><a class="title" href="/posts/%E7%BC%96%E8%BE%91%E5%99%A8%E6%94%B9%E9%80%A0%E8%AE%A1%E5%88%92(%E6%9C%AA%E5%AE%8C%E6%88%90).html" title="编辑器改造计划">编辑器改造计划</a><time datetime="2024-03-30T08:24:59.000Z" title="发表于 2024-03-30 16:24:59">2024-03-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/%E5%9C%A8Markdown%E4%B8%AD%E6%8F%92%E5%85%A5icons.html" title="在Markdown中插入icons"><img src="https://mdstore.oss-cn-beijing.aliyuncs.com/markdown/202403292349691.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在Markdown中插入icons"/></a><div class="content"><a class="title" href="/posts/%E5%9C%A8Markdown%E4%B8%AD%E6%8F%92%E5%85%A5icons.html" title="在Markdown中插入icons">在Markdown中插入icons</a><time datetime="2024-03-29T07:32:29.000Z" title="发表于 2024-03-29 15:32:29">2024-03-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/C%E8%AF%AD%E8%A8%80%EF%BC%9A%E6%9B%B4%E5%BA%95%E5%B1%82.html" title="C语言：更底层"><img src="/img/default_cover3.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="C语言：更底层"/></a><div class="content"><a class="title" href="/posts/C%E8%AF%AD%E8%A8%80%EF%BC%9A%E6%9B%B4%E5%BA%95%E5%B1%82.html" title="C语言：更底层">C语言：更底层</a><time datetime="2024-03-28T06:25:08.000Z" title="发表于 2024-03-28 14:25:08">2024-03-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Kihara Ri</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">海内存知己，天涯若比邻</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><!-- hexo injector body_end start --><script data-pjax>
+    function butterfly_categories_card_injector_config(){
+      var parent_div_git = document.getElementById('recent-posts');
+      var item_html = '<style>li.categoryBar-list-item{width:32.3%;}.categoryBar-list{max-height: 760px;overflow:auto;}.categoryBar-list::-webkit-scrollbar{width:0!important}@media screen and (max-width: 650px){.categoryBar-list{max-height: 640px;}}</style><div class="recent-post-item" style="height:auto;width:100%;padding:0px;"><div id="categoryBar"><ul class="categoryBar-list"><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover1.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/技术/&quot;);" href="javascript:void(0);">技术</a><span class="categoryBar-list-count">15</span><span class="categoryBar-list-descr">Ubuntu指南</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover2.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/logs/&quot;);" href="javascript:void(0);">logs</a><span class="categoryBar-list-count">17</span><span class="categoryBar-list-descr">玩转Win10</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover3.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/数学/&quot;);" href="javascript:void(0);">数学</a><span class="categoryBar-list-count">7</span><span class="categoryBar-list-descr">长篇小说连载</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover4.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/物理/&quot;);" href="javascript:void(0);">物理</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">个人日记</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover5.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/mathematics/&quot;);" href="javascript:void(0);">mathematics</a><span class="categoryBar-list-count">9</span><span class="categoryBar-list-descr">诗词歌赋</span></li><li class="categoryBar-list-item" style="background:url(https://npm.elemecdn.com/akilar-candyassets/image/cover6.webp);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/Linux/&quot;);" href="javascript:void(0);">Linux</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr">杂谈教程</span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/万物/&quot;);" href="javascript:void(0);">万物</a><span class="categoryBar-list-count">6</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/语言/&quot;);" href="javascript:void(0);">语言</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li><li class="categoryBar-list-item" style="background:url(undefined);"> <a class="categoryBar-list-link" onclick="pjax.loadUrl(&quot;categories/项目/&quot;);" href="javascript:void(0);">项目</a><span class="categoryBar-list-count">1</span><span class="categoryBar-list-descr"></span></li></ul></div></div>';
+      console.log('已挂载butterfly_categories_card')
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+      }
+    if( document.getElementById('recent-posts') && (location.pathname ==='/categories/'|| '/categories/' ==='all')){
+    butterfly_categories_card_injector_config()
+    }
+  </script><!-- hexo injector body_end end --></body></html>
