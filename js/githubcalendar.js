@@ -266,7 +266,7 @@ var loading_git = (color) => {
     return loading
 };
 
-(function(){var git_user = 'Kihara Ri'; /* 在这里修改用户名 */ 
+(function(){var git_user = 'Kihara-Ri'; /* 在这里修改用户名 */ 
     var github_container = document.getElementById('github_container');
     var github_loading = document.getElementById('github_loading');
     var git_purple = ['#ebedf0', '#fdcdec', '#fc9bd9', '#fa6ac5', '#f838b2', '#f5089f', '#c4067e', '#92055e', '#540336', '#48022f', '#30021f',];
